@@ -1,0 +1,35 @@
+{
+  "name": "discord-manager-bot",
+  "version": "1.0.0",
+  "description": "Bot to manage Discord Server",
+  "main": "index.js",
+  "author": "Rafael Tessarolo",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore node_modules src/index.ts && json-server --watch src/db.json",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.5.3",
+    "date-fns": "^2.21.1",
+    "discord-music-player": "^7.2.0",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "json-server": "^0.16.3",
+    "ytdl-core": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/ffmpeg": "^1.0.4",
+    "@types/fluent-ffmpeg": "^2.1.17",
+    "@types/json-server": "^0.14.3",
+    "@types/node": "^14.14.41",
+    "axios": "^0.21.1",
+    "ts-node-dev": "^1.1.6",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.2.4"
+  }
+}
