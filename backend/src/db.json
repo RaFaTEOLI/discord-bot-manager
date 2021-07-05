@@ -14,27 +14,99 @@
     },
     {
       "id": 2,
+      "command": "!play <link>",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para tocar música",
+      "response": null
+    },
+    {
+      "id": 3,
+      "command": "!pause",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para pausar a música",
+      "response": null
+    },
+    {
+      "id": 4,
+      "command": "!resume",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para continuar a música",
+      "response": null
+    },
+    {
+      "id": 5,
+      "command": "!shuffle",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para colocar em ordem aleatória",
+      "response": null
+    },
+    {
+      "id": 5,
+      "command": "!playing",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para ver qual música está tocando",
+      "response": null
+    },
+    {
+      "id": 6,
+      "command": "!addplaylist",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para ver adicionar uma playlist na fila",
+      "response": null
+    },
+    {
+      "id": 7,
+      "command": "!queue",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para ver a fila de reprodução",
+      "response": null
+    },
+    {
+      "id": 8,
+      "command": "!skip",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para ver a pular a música",
+      "response": null
+    },
+    {
+      "id": 9,
+      "command": "!stop",
+      "dispatcher": "message",
+      "type": "action",
+      "description": "Comando para ver a parar a música",
+      "response": null
+    },
+    {
+      "id": 10,
       "command": "!addwin",
       "dispatcher": "message",
       "type": "action",
       "description": "Adiciona vitórias"
     },
     {
-      "id": 3,
+      "id": 11,
       "command": "!resetwins",
       "dispatcher": "message",
       "type": "action",
       "description": "Limpa vitórias"
     },
     {
-      "id": 4,
+      "id": 12,
       "command": "!wins",
       "dispatcher": "message",
       "type": "action",
       "description": "Mostra quantidade de vitórias"
     },
     {
-      "id": 5,
+      "id": 13,
       "command": "!startwarzone",
       "dispatcher": "client",
       "type": "music",
@@ -42,7 +114,7 @@
       "response": "https://open.spotify.com/track/6siDDghVE7fxel5o7fE4OF?si=b3d61e7f8f784988"
     },
     {
-      "id": 6,
+      "id": 14,
       "command": "!gulagwin",
       "dispatcher": "client",
       "type": "music",
@@ -50,14 +122,14 @@
       "response": "https://open.spotify.com/track/24Yi9hE78yPEbZ4kxyoXAI?si=2301e5891ba34556"
     },
     {
-      "id": 7,
+      "id": 15,
       "command": "!lofi",
       "dispatcher": "client",
       "description": "Toca playlist LoFi",
       "response": "https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"
     },
     {
-      "id": 8,
+      "id": 16,
       "command": "!carmusic",
       "dispatcher": "client",
       "type": "music",
@@ -65,7 +137,7 @@
       "response": "https://open.spotify.com/playlist/5Y9eVQ3u5rBAfL61OmsvDZ?si=11e22479ddcf40ca"
     },
     {
-      "id": 9,
+      "id": 17,
       "command": "!lit",
       "dispatcher": "client",
       "type": "music",
@@ -73,7 +145,7 @@
       "response": "https://open.spotify.com/playlist/7y47hwPaVMG3527fzdqeEz?si=199e272df1af4d7e"
     },
     {
-      "id": 10,
+      "id": 18,
       "command": "!nostalgy",
       "dispatcher": "client",
       "type": "music",
@@ -81,7 +153,7 @@
       "response": "https://open.spotify.com/playlist/0aIH01fiJYjb23FCGuleNf?si=bdb26051d4ec47eb"
     },
     {
-      "id": 11,
+      "id": 19,
       "command": "!deephouse",
       "dispatcher": "client",
       "type": "music",
@@ -89,7 +161,7 @@
       "response": "https://open.spotify.com/playlist/2t5U3e6mHq4T2fKXknS4dd?si=2949ab1e236344b5"
     },
     {
-      "id": 12,
+      "id": 20,
       "command": "!chillout",
       "dispatcher": "client",
       "type": "music",
@@ -97,7 +169,7 @@
       "response": "https://open.spotify.com/playlist/3r40MPFi8fCAHPrxrb9f3I?si=05Tl5vbIRZqIwrDKIv1zsg"
     },
     {
-      "id": 13,
+      "id": 21,
       "command": "!nightdrive",
       "dispatcher": "client",
       "type": "music",
@@ -105,7 +177,7 @@
       "response": "https://open.spotify.com/playlist/18GJyqIBkRWeR1Z57sXQDq?si=tWwlOMrDRxeU-96WHIkLmA"
     },
     {
-      "id": 14,
+      "id": 22,
       "command": "!nightdrive2",
       "dispatcher": "client",
       "type": "music",
@@ -113,7 +185,7 @@
       "response": "https://open.spotify.com/playlist/55kXFRgaWu8Vu0ko7CfbXB?si=cf467669338d48ff"
     },
     {
-      "id": 15,
+      "id": 23,
       "command": "!deepstrangefruits",
       "dispatcher": "client",
       "type": "music",
@@ -121,7 +193,7 @@
       "response": "https://open.spotify.com/playlist/6xGLprv9fmlMgeAMpW0x51?si=3kBlZr9NR0muCzttljjP7A"
     },
     {
-      "id": 16,
+      "id": 24,
       "command": "!rocketleague",
       "dispatcher": "client",
       "type": "music",
@@ -129,28 +201,28 @@
       "response": "https://open.spotify.com/playlist/5A7t00DC3dP7htDmFsjF2I?si=28eb317fac49422d"
     },
     {
-      "id": 17,
+      "id": 25,
       "command": "!game",
       "dispatcher": "message",
       "type": "action",
       "description": "Mostra o jogo que está sendo jogado no momento"
     },
     {
-      "id": 18,
+      "id": 26,
       "command": "!setgame <callofduty>",
       "dispatcher": "message",
       "type": "action",
       "description": "Adicionar jogo que está sendo jogado no momento"
     },
     {
-      "id": 19,
+      "id": 27,
       "command": "!resetgame",
       "dispatcher": "message",
       "type": "action",
       "description": "Limpa jogo que está sendo jogado no momento"
     },
     {
-      "id": 20,
+      "id": 28,
       "command": "!rafa",
       "dispatcher": "message",
       "type": "message",
@@ -158,7 +230,7 @@
       "response": "Pra ele ja deu de Warzone por hoje!"
     },
     {
-      "id": 21,
+      "id": 29,
       "command": "!rick",
       "dispatcher": "message",
       "type": "message",
@@ -166,7 +238,7 @@
       "response": "O cara que demora 2 horas pra jantar/almoçar"
     },
     {
-      "id": 22,
+      "id": 30,
       "command": "!thiago",
       "dispatcher": "message",
       "type": "message",
@@ -174,7 +246,7 @@
       "response": "Louco pra pegar uma militar"
     },
     {
-      "id": 23,
+      "id": 31,
       "command": "!leo",
       "dispatcher": "message",
       "type": "message",
@@ -182,7 +254,7 @@
       "response": "Ta no Bar Mitzvah https://www.youtube.com/watch?v=BkWJik6QjeQ"
     },
     {
-      "id": 24,
+      "id": 32,
       "command": "!gui",
       "dispatcher": "message",
       "type": "message",
@@ -190,7 +262,7 @@
       "response": "Já tá bravo Gui?"
     },
     {
-      "id": 25,
+      "id": 33,
       "command": "!gi",
       "dispatcher": "message",
       "type": "message",
@@ -198,7 +270,7 @@
       "response": "Vem pro FIFA vem!"
     },
     {
-      "id": 26,
+      "id": 34,
       "command": "!addcommand",
       "dispatcher": "message",
       "type": "action",
@@ -206,7 +278,7 @@
       "response": null
     },
     {
-      "id": 27,
+      "id": 35,
       "command": "!helpcommand",
       "dispatcher": "message",
       "type": "action",
@@ -219,7 +291,7 @@
       "type": "music",
       "description": "Toca musica invisible",
       "response": "https://open.spotify.com/track/2BgagqJWYfrKPhz3f5V0Sw?si=47f07de2ac584184",
-      "id": 28
+      "id": 36
     }
   ],
   "types": [

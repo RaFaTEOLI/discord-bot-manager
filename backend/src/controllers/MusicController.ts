@@ -1,7 +1,6 @@
 import { Player } from 'discord-music-player';
 import { Message } from 'discord.js';
-// import ytdl from 'ytdl-core';
-const ytdl = require('ytdl-core');
+const Discord = require('discord.js');
 require('dotenv').config();
 
 interface IMusic {
@@ -25,8 +24,6 @@ class MusicController {
 
   public async execute(message: Message, player: Player, args: Array<string>) {
     try {
-      console.log('Chamou!');
-      console.log(player);
       const song = await player.play(message, args.join(' '));
 
       if (song) {
@@ -38,17 +35,25 @@ class MusicController {
     }
   }
 
-  public async playing(player: Player, message: Message) {
+  public async playing(message: Message, player: Player) {
     if (player.isPlaying(message)) {
       console.log('Queue exists.');
+      message.channel.send(
+        new Discord.MessageEmbed().setColor('#0099ff').setTitle(`Queue exists.`)
+      );
     } else {
       console.log('Queue does not exist.');
+      message.channel.send(
+        new Discord.MessageEmbed()
+          .setColor('#0099ff')
+          .setTitle(`Queue does not exist.`)
+      );
     }
   }
 
   public async addPlaylist(
-    player: Player,
     message: Message,
+    player: Player,
     args: Array<string>
   ) {
     await player.playlist(message, {
@@ -81,7 +86,7 @@ class MusicController {
   //   message.channel.send(`Seeked to ${args[0]} second of ${song.name}.`);
   // }
 
-  public async queue(player: Player, message: Message) {
+  public async queue(message: Message, player: Player) {
     const queue = player.getQueue(message);
     if (queue) {
       message.channel.send(
@@ -118,17 +123,17 @@ class MusicController {
     if (isDone) message.channel.send('Music stopped, the Queue was cleared!');
   }
 
-  public async pause(player: Player, message: Message) {
+  public async pause(message: Message, player: Player) {
     const song = player.pause(message);
     if (song) message.channel.send(`${song.name} was paused!`);
   }
 
-  public async resume(player: Player, message: Message) {
+  public async resume(message: Message, player: Player) {
     const song = player.resume(message);
     if (song) message.channel.send(`${song.name} was resumed!`);
   }
 
-  public async shuffle(player: Player, message: Message) {
+  public async shuffle(message: Message, player: Player) {
     const songs = player.shuffle(message);
     if (songs) {
       message.channel.send('Server Queue was shuffled.');

@@ -19,7 +19,6 @@ const botController = new BotController();
 const gameController = new GameController();
 const serverController = new ServerController();
 const musicController = new MusicController();
-const queue = new Map();
 
 client.on('message', async message => {
   if (message.author.bot) return;
@@ -35,6 +34,24 @@ client.on('message', async message => {
       break;
     case 'play':
       await musicController.execute(message, player, args);
+      break;
+    case 'pause':
+      await musicController.pause(message, player);
+      break;
+    case 'resume':
+      await musicController.resume(message, player);
+      break;
+    case 'shuffle':
+      await musicController.shuffle(message, player);
+      break;
+    case 'playing':
+      await musicController.playing(message, player);
+      break;
+    case 'addplaylist':
+      await musicController.addPlaylist(message, player, args);
+      break;
+    case 'queue':
+      await musicController.queue(message, player);
       break;
     case 'skip':
       await musicController.skip(player, message);
