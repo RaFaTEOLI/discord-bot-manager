@@ -25,6 +25,8 @@ class MusicController {
 
   public async execute(message: Message, player: Player, args: Array<string>) {
     try {
+      console.log('Chamou!');
+      console.log(player);
       const song = await player.play(message, args.join(' '));
 
       if (song) {

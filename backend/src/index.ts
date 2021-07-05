@@ -29,14 +29,12 @@ client.on('message', async message => {
   const args: Array<string> = await commandsController.getArgs(commandBody);
   const command: string = args.shift().toLowerCase();
 
-  const serverQueue = queue.get(message.guild.id);
-
   switch (command) {
     case 'rubeo':
       await botController.me(message);
       break;
     case 'play':
-      await musicController.execute(message, serverQueue, args);
+      await musicController.execute(message, player, args);
       break;
     case 'skip':
       await musicController.skip(player, message);
