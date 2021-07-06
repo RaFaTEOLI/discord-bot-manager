@@ -5,8 +5,8 @@ import BotController from './controllers/BotController';
 import CommandsController from './controllers/CommandsController';
 import ServerController from './controllers/ServerController';
 import MusicController from './controllers/MusicController';
+import 'dotenv/config';
 const Discord = require('discord.js');
-require('dotenv').config();
 
 const client = new Client();
 const prefix = '!';
@@ -16,7 +16,7 @@ const gameController = new GameController();
 const serverController = new ServerController();
 const musicController = new MusicController();
 
-console.log('Bot Running ✅');
+console.log('✅  Bot running...');
 
 client.on('message', async message => {
   if (message.author.bot) return;
