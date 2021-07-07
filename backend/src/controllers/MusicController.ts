@@ -30,6 +30,7 @@ class MusicController {
         return;
       }
     } catch (error) {
+      console.log(`Error: ${error}`);
       message.channel.send(error.message);
     }
   }

@@ -26,6 +26,7 @@ client.on('message', async message => {
   const args: Array<string> = await commandsController.getArgs(commandBody);
   const command: string = args.shift().toLowerCase();
 
+  console.log(`Command: ${command}`);
   switch (command) {
     case 'rubeo':
       await botController.me(message);
@@ -183,6 +184,7 @@ player
   )
   // Emitted when there was an error with NonAsync functions.
   .on('error', (error, message) => {
+    console.log(`Error: ${error}`);
     switch (error) {
       // Thrown when the YouTube search could not find any song with that query.
       case 'SearchIsNull':
