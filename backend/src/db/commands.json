@@ -120,7 +120,8 @@
     "id": 15,
     "command": "!lofi",
     "dispatcher": "client",
-    "description": "Toca playlist LoFi",
+    "type": "music",
+    "description": "Toca playlist Lofi",
     "response": "https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"
   },
   {

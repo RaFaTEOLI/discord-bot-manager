@@ -13,13 +13,12 @@ interface ISong {
 }
 
 class MusicController {
-  public async playMusic({ client, url }: IMusic) {
-    await client.channels.cache
-      .get(process.env.MUSIC_CHANNEL_ID)
-      .send(`-clear`);
-    await client.channels.cache
-      .get(process.env.MUSIC_CHANNEL_ID)
-      .send(`-play ${url}`);
+  public async playMusic(message: Message, player: Player, url: string) {
+    player.stop(message);
+    await player.playlist(message, {
+      search: url,
+      maxSongs: 400,
+    });
   }
 
   public async execute(message: Message, player: Player, args: Array<string>) {
