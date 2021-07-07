@@ -1,8 +1,10 @@
-import axios from 'axios';
+import { Request, Response } from 'express';
 const Discord = require('discord.js');
-import { ICommands } from './CommandsController';
 import { Message } from 'discord.js';
-import { baseUrl } from './ServerController';
+import BotRepository from '../repository/BotRepository';
+import bot from '../db/bot.json';
+import commands from '../db/commands.json';
+import types from '../db/types.json';
 
 interface ITypes {
   name: string;
@@ -14,24 +16,29 @@ export interface IBot {
 }
 
 class BotController {
+  private bot: Array<IBot>;
+
+  public constructor() {
+    this.bot = bot;
+  }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const botRepository = new BotRepository(bot);
+    return response.json(await botRepository.all());
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const botRepository = new BotRepository(bot);
+    const data = await botRepository.findById(id);
+    return response.json(data);
+  }
+
   public async me(message: Message) {
-    const response = await axios.get<IBot>(`${baseUrl}/bot`);
-    const bot = response.data;
-
-    //     message.reply(
-    //       `${bot.description}
-
-    // Lista de comandos:
-
-    // ${await this.getDescription()}
-    //         `
-    //     );
     const Embed = new Discord.MessageEmbed();
-    Embed.setTitle(bot.description);
+    Embed.setTitle(this.bot[0].description);
 
-    const botCommands = await axios.get<ICommands[]>(`${baseUrl}/commands`);
-
-    botCommands.data.forEach(command => {
+    commands.forEach(command => {
       Embed.addField(command.command, command.description);
     });
 
@@ -48,20 +55,10 @@ class BotController {
     );
   }
 
-  // public async getDescription() {
-  //   const botCommands = await axios.get<ICommands[]>(`${baseUrl}/commands`);
-  //   let commandList = '';
-  //   botCommands.data.forEach(command => {
-  //     commandList += `${command.command} - ${command.description}\n`;
-  //   });
-  //   return commandList;
-  // }
-
   public async getHelpCommand() {
-    const types = await axios.get<ITypes[]>(`${baseUrl}/types`);
     let typesList = '';
     let i = 0;
-    types.data.forEach(type => {
+    types.forEach(type => {
       if (i > 0) {
         typesList += `|${type.name}`;
       } else {

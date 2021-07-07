@@ -1,9 +1,12 @@
+import { Request, Response } from 'express';
 import { Message, Client } from 'discord.js';
-import axios from 'axios';
 import MusicController from './MusicController';
 import MessageController from './MessageController';
 import { baseUrl } from './ServerController';
 import { IBot } from './BotController';
+import CommandsRepository from '../repository/CommandsRepository';
+import commands from '../db/commands.json';
+import bot from '../db/bot.json';
 
 export interface ICommands {
   id?: number;
@@ -22,6 +25,36 @@ export interface ICommand {
 }
 
 class CommandsController {
+  public async index(request: Request, response: Response): Promise<Response> {
+    const commandsRepository = new CommandsRepository(commands);
+    const { command } = request.query;
+    if (command) {
+      return response.json(await commandsRepository.findByCommand(command));
+    } else {
+      return response.json(await commandsRepository.all());
+    }
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const commandsRepository = new CommandsRepository(commands);
+    const data = await commandsRepository.findById(id);
+    return response.json(data);
+  }
+
+  public async store(request: Request, _response: Response): Promise<Response> {
+    const commandsRepository = new CommandsRepository(commands);
+    const { command, description, dispatcher, type, response } = request.body;
+    const data = await commandsRepository.store({
+      command,
+      description,
+      dispatcher,
+      type,
+      response,
+    });
+    return _response.json(data);
+  }
+
   public async getArgs(command: string) {
     const semiArgs = command.split('"');
     const fullArgs = semiArgs[0].split(' ');
@@ -40,18 +73,12 @@ class CommandsController {
   public async executeCommand({ message, client, command }: ICommand) {
     const musicController = new MusicController();
     const messageController = new MessageController();
+    const commandsRepository = new CommandsRepository(commands);
 
-    const botResponse = await axios.get<IBot>(`${baseUrl}/bot`);
-    const bot = botResponse.data;
-
-    const response = await axios.get<ICommands[]>(
-      `${baseUrl}/commands?command=!${command}`
-    );
-
-    const cmdObj = response.data[0];
+    const cmdObj = await commandsRepository.findByCommand(command);
 
     if (!cmdObj) {
-      message.reply(`Comando não encontrado, tente !${bot.name}.`);
+      message.reply(`Comando não encontrado, tente !${bot[0].name}.`);
       return;
     }
 
@@ -63,7 +90,7 @@ class CommandsController {
         await messageController.sendMessage({ message, text: cmdObj.response });
         break;
       default:
-        message.reply(`Comando não encontrado, tente !${bot.name}.`);
+        message.reply(`Comando não encontrado, tente !${bot[0].name}.`);
     }
   }
 
@@ -76,11 +103,12 @@ class CommandsController {
     message,
   }: ICommands) {
     try {
-      await axios.post(`${baseUrl}/commands`, {
+      const commandsRepository = new CommandsRepository(commands);
+      await commandsRepository.store({
         command: `!${command}`,
+        description,
         dispatcher,
         type,
-        description,
         response,
       });
 
