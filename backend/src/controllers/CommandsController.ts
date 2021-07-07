@@ -5,6 +5,7 @@ import MessageController from './MessageController';
 import CommandsRepository from '../repository/CommandsRepository';
 import commands from '../db/commands.json';
 import bot from '../db/bot.json';
+import { Player } from 'discord-music-player';
 
 export interface ICommands {
   id?: number;
@@ -18,7 +19,7 @@ export interface ICommands {
 
 export interface ICommand {
   message: Message;
-  client: Client;
+  player: Player;
   command: string;
 }
 
@@ -68,7 +69,7 @@ class CommandsController {
     return fullArgs;
   }
 
-  public async executeCommand({ message, client, command }: ICommand) {
+  public async executeCommand({ message, player, command }: ICommand) {
     const musicController = new MusicController();
     const messageController = new MessageController();
     const commandsRepository = new CommandsRepository(commands);
@@ -82,7 +83,7 @@ class CommandsController {
 
     switch (cmdObj.type) {
       case 'music':
-        await musicController.playMusic({ client, url: cmdObj.response });
+        await musicController.playMusic(message, player, cmdObj.response);
         break;
       case 'message':
         await messageController.sendMessage({ message, text: cmdObj.response });

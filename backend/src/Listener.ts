@@ -95,7 +95,7 @@ client.on('message', async message => {
       });
       break;
     default:
-      commandsController.executeCommand({ message, client, command });
+      commandsController.executeCommand({ message, player, command });
   }
 });
 
