@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import { Message, Client } from 'discord.js';
 import MusicController from './MusicController';
 import MessageController from './MessageController';
-import { baseUrl } from './ServerController';
-import { IBot } from './BotController';
 import CommandsRepository from '../repository/CommandsRepository';
 import commands from '../db/commands.json';
 import bot from '../db/bot.json';
