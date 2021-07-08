@@ -1,7 +1,7 @@
 import { HeaderContainer } from './styles';
 
 interface HeaderProps {
-  title: string;
+  title: string | undefined;
 }
 
 const botName = 'Rubeo';

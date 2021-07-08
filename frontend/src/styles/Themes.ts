@@ -8,6 +8,8 @@ export const lightTheme = {
   modalBackgroundColor: 'rgba(0, 0, 0, 0.6)',
   navbarColor: '#F0F0F0',
   navbarHover: '#30343d',
+  inputBackground: '#4c6e7f',
+  descriptionColor: '#FCBF49',
 };
 export const darkTheme = {
   body: '#363537',
@@ -19,4 +21,6 @@ export const darkTheme = {
   modalBackgroundColor: 'rgba(0, 0, 0, 0.6)',
   navbarColor: '#264653',
   navbarHover: '#30343d',
+  inputBackground: '#4c6e7f',
+  descriptionColor: '#FCBF49',
 };
