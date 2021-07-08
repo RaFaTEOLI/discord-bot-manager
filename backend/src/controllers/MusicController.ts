@@ -58,7 +58,7 @@ class MusicController {
   ) {
     await player.playlist(message, {
       search: args.join(' '),
-      maxSongs: 400,
+      maxSongs: -1,
     });
   }
 
