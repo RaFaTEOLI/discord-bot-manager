@@ -1,18 +1,35 @@
+import { Request, Response } from 'express';
 import { Player } from 'discord-music-player';
 import { Message } from 'discord.js';
+import MusicRepository from '../repository/MusicRepository';
+import QueueRepository from '../repository/QueueRepository';
+import music from '../db/music.json';
+import queue from '../db/queue.json';
 const Discord = require('discord.js');
 require('dotenv').config();
-
-interface IMusic {
-  client: any;
-  url: string;
-}
-
-interface ISong {
-  name: string;
-}
-
 class MusicController {
+  private musicRepository: MusicRepository;
+  private queueRepository: QueueRepository;
+
+  public constructor() {
+    this.musicRepository = new MusicRepository(music);
+    this.queueRepository = new QueueRepository(queue);
+  }
+
+  public async getQueue(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    return response.json(queue[0]);
+  }
+
+  public async getSong(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    return response.json(music[0]);
+  }
+
   public async playMusic(message: Message, player: Player, url: string) {
     player.stop(message);
     await player.playlist(message, {
@@ -26,6 +43,7 @@ class MusicController {
       const song = await player.play(message, args.join(' '));
 
       if (song) {
+        this.musicRepository.store(song.name);
         console.log(`Playing ${song.name}`);
         return;
       }
@@ -65,6 +83,7 @@ class MusicController {
   public async song(player: Player, message: Message) {
     const song = await player.nowPlaying(message);
     if (song) {
+      this.musicRepository.store(song.name);
       message.channel.send(`Current song: ${song.name}`);
     }
   }
@@ -72,6 +91,7 @@ class MusicController {
   public async clearQueue(player: Player, message: Message) {
     const isDone = player.clearQueue(message);
     if (isDone) {
+      this.musicRepository.store(null);
       message.channel.send('Queue was cleared!');
     }
   }
@@ -120,7 +140,10 @@ class MusicController {
 
   public async stop(player: Player, message: Message) {
     const isDone = player.stop(message);
-    if (isDone) message.channel.send('Music stopped, the Queue was cleared!');
+    if (isDone) {
+      this.musicRepository.store(null);
+      message.channel.send('Music stopped, the Queue was cleared!');
+    }
   }
 
   public async pause(message: Message, player: Player) {

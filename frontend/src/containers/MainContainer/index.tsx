@@ -13,8 +13,14 @@ interface IBot {
   description: string;
 }
 
+interface IMusic {
+  currentSong: string;
+}
+
 function MainContainer() {
   const [bot, setBot] = useState<IBot>();
+  const [music, setMusic] = useState<IMusic>();
+
   useEffect(() => {
     api.get(`/bot`).then(response => {
       if (response.data) {
@@ -22,11 +28,19 @@ function MainContainer() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    api.get(`/music`).then(response => {
+      if (response.data) {
+        setMusic(response.data);
+      }
+    });
+  }, []);
   return (
     <>
       <Header title={bot?.name} />
       <Content>
-        <Player />
+        <Player musicName={music?.currentSong} />
         <CommandsContainer />
       </Content>
     </>

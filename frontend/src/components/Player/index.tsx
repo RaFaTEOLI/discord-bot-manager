@@ -12,12 +12,13 @@ import pauseImg from '../../assets/pause.svg';
 import goBackImg from '../../assets/goback.svg';
 import linkinParkImg from '../../assets/linkinPark.svg';
 
-// interface PlayerProps {
-//   musicName?: string;
-//   musicBand?: string;
-// }
+interface PlayerProps {
+  musicName?: string;
+}
 
-function Player() {
+function Player({ musicName }: PlayerProps) {
+  const name = musicName?.split('-')[0] ? musicName?.split('-')[0] : '';
+  const band = musicName?.split('-')[1] ? musicName?.split('-')[1] : '';
   return (
     <PlayerContainer>
       <Playing>
@@ -32,8 +33,8 @@ function Player() {
       <Music>
         <MusicTitle>
           {' '}
-          <p>Numb</p>
-          <p>Linkin Park</p>
+          <p>{name}</p>
+          <p>{band}</p>
         </MusicTitle>
         <img src={linkinParkImg} alt='Album' />
       </Music>

@@ -6,6 +6,8 @@ import CommandsController from './controllers/CommandsController';
 import ServerController from './controllers/ServerController';
 import MusicController from './controllers/MusicController';
 import 'dotenv/config';
+import MusicRepository from './repository/MusicRepository';
+import music from './db/music.json';
 const Discord = require('discord.js');
 
 const client = new Client();
@@ -117,6 +119,8 @@ const player = new Player(client, {
   quality: 'high',
 });
 
+const musicRepository = new MusicRepository(music);
+
 player
   // Emitted when channel was empty.
   .on('channelEmpty', (message, queue) =>
@@ -151,21 +155,23 @@ player
     )
   )
   // Emitted when a song changed.
-  .on('songChanged', (message, newSong, oldSong) =>
+  .on('songChanged', (message, newSong, oldSong) => {
+    musicRepository.store(newSong.name);
     message.channel.send(
       new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle(newSong.name + ' is now playing!')
-    )
-  )
+    );
+  })
   // Emitted when a first song in the queue started playing (after play method).
-  .on('songFirst', (message, song) =>
+  .on('songFirst', (message, song) => {
+    musicRepository.store(song.name);
     message.channel.send(
       new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle(song.name + ' is now playing!')
-    )
-  )
+    );
+  })
   // Emitted when someone disconnected the bot from the channel.
   .on('clientDisconnect', (message, queue) =>
     message.channel.send(
