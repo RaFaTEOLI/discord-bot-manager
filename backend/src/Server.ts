@@ -11,6 +11,9 @@ app.use(express.json());
 app.use(routes);
 
 app.get('/', (request: Request, response: Response) => {
+  if (request.query.code) {
+    return response.send({ code: request.query.code });
+  }
   return response.send({ message: 'Hello World' });
 });
 
