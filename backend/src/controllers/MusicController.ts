@@ -32,6 +32,10 @@ class MusicController {
 
   public async playMusic(message: Message, player: Player, url: string) {
     player.stop(message);
+    console.log({
+      action: 'playMusic',
+      url,
+    });
     await player.playlist(message, {
       search: url,
       maxSongs: 400,
