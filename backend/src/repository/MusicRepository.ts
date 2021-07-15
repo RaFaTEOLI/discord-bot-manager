@@ -29,6 +29,7 @@ class MusicRepository extends BaseRepository {
       // };
       this.db[0].name = songName;
       this.db[0].artist = bandName;
+      this.db[0].albumImage = null;
     }
 
     await fs.writeFile(this.path + '/music.json', JSON.stringify(this.db), {

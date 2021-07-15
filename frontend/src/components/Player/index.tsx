@@ -7,9 +7,9 @@ import {
 } from './styles';
 
 import musicImg from '../../assets/music.svg';
-import skipImg from '../../assets/skip.svg';
-import pauseImg from '../../assets/pause.svg';
-import goBackImg from '../../assets/goback.svg';
+// import skipImg from '../../assets/skip.svg';
+// import pauseImg from '../../assets/pause.svg';
+// import goBackImg from '../../assets/goback.svg';
 import emptyAlbumImg from '../../assets/emptyAlbum.png';
 interface PlayerProps {
   name?: string;

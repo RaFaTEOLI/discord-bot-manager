@@ -21,3 +21,15 @@ export const ListCommandsContainer = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
 `;
+
+export const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  input,
+  select {
+    margin-bottom: 3px;
+  }
+  a {
+    margin-top: 6px;
+  }
+`;

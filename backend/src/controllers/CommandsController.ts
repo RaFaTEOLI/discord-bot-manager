@@ -45,7 +45,7 @@ class CommandsController {
     const commandsRepository = new CommandsRepository(commands);
     const { command, description, dispatcher, type, response } = request.body;
     const data = await commandsRepository.store({
-      command,
+      command: `!${command}`,
       description,
       dispatcher,
       type,

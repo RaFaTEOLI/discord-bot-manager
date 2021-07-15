@@ -39,6 +39,15 @@ function MainContainer() {
       }
     });
   }, []);
+
+  setInterval(() => {
+    api.get(`/music`).then(response => {
+      if (response.data) {
+        setMusic(response.data);
+      }
+    });
+  }, 60000);
+
   return (
     <>
       <Header title={bot?.name} />
