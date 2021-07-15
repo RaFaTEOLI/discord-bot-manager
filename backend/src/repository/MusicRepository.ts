@@ -15,25 +15,26 @@ class MusicRepository extends BaseRepository {
     if (song) {
       const songName = song
         .split('-')[0]
-        .replace('[Official Music Video]', '')
+        ?.replace('[Official Music Video]', '')
         .trimEnd();
-      const bandName = song.split('-')[1].trimStart().trimEnd();
+      const bandName = song.split('-')[1]?.trimStart().trimEnd();
 
-      const spotifyController = new SpotifyController();
-      const spotifyItem = await spotifyController.getItem(songName, bandName);
-      const albumImage = await spotifyController.getTrack(spotifyItem.id);
+      // const spotifyController = new SpotifyController();
+      // const spotifyItem = await spotifyController.getItem(songName, bandName);
+      // const albumImage = await spotifyController.getTrack(spotifyItem.id);
 
-      this.db[0] = {
-        ...spotifyItem,
-        albumImage,
-      };
+      // this.db[0] = {
+      //   ...spotifyItem,
+      //   albumImage,
+      // };
+      this.db[0].name = songName;
+      this.db[0].artist = bandName;
     }
 
-    this.db[0].currentSong = song;
     await fs.writeFile(this.path + '/music.json', JSON.stringify(this.db), {
       encoding: 'utf8',
     });
-    console.log(this.db);
+    console.log('DB:', this.db);
     return this.db[0];
   }
 }

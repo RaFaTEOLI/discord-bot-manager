@@ -10,15 +10,14 @@ import musicImg from '../../assets/music.svg';
 import skipImg from '../../assets/skip.svg';
 import pauseImg from '../../assets/pause.svg';
 import goBackImg from '../../assets/goback.svg';
-import linkinParkImg from '../../assets/linkinPark.svg';
-
+import emptyAlbumImg from '../../assets/emptyAlbum.png';
 interface PlayerProps {
-  musicName?: string;
+  name?: string;
+  artist?: string;
+  albumImage?: string;
 }
 
-function Player({ musicName }: PlayerProps) {
-  const name = musicName?.split('-')[0] ? musicName?.split('-')[0] : '';
-  const band = musicName?.split('-')[1] ? musicName?.split('-')[1] : '';
+function Player({ name, artist, albumImage }: PlayerProps) {
   return (
     <PlayerContainer>
       <Playing>
@@ -26,17 +25,22 @@ function Player({ musicName }: PlayerProps) {
         <p>Now Playing...</p>
       </Playing>
       <Controls>
-        <img src={goBackImg} alt='Go Back' />
+        {/* <img src={goBackImg} alt='Go Back' />
         <img src={pauseImg} alt='Pause' />
-        <img src={skipImg} alt='Skip' />
+        <img src={skipImg} alt='Skip' /> */}
       </Controls>
       <Music>
         <MusicTitle>
           {' '}
           <p>{name}</p>
-          <p>{band}</p>
+          <p>{artist}</p>
         </MusicTitle>
-        <img src={linkinParkImg} alt='Album' />
+        <img
+          src={albumImage ? albumImage : emptyAlbumImg}
+          height='60'
+          width='60'
+          alt='Album'
+        />
       </Music>
     </PlayerContainer>
   );

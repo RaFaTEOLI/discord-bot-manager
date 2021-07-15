@@ -14,7 +14,10 @@ interface IBot {
 }
 
 interface IMusic {
-  currentSong: string;
+  id: string;
+  name: string;
+  artist: string;
+  albumImage: string;
 }
 
 function MainContainer() {
@@ -40,7 +43,11 @@ function MainContainer() {
     <>
       <Header title={bot?.name} />
       <Content>
-        <Player musicName={music?.currentSong} />
+        <Player
+          name={music?.name}
+          artist={music?.artist}
+          albumImage={music?.albumImage}
+        />
         <CommandsContainer />
       </Content>
     </>
