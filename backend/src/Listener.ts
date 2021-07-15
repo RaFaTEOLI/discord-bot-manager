@@ -147,13 +147,14 @@ player
     )
   )
   // Emitted when there was no more music to play.
-  .on('queueEnd', (message, queue) =>
-    message.channel.send(
+  .on('queueEnd', (message, queue) => {
+    musicRepository.store(null);
+    return message.channel.send(
       new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle('The queue has ended!')
-    )
-  )
+    );
+  })
   // Emitted when a song changed.
   .on('songChanged', (message, newSong, oldSong) => {
     musicRepository.store(newSong.name);
