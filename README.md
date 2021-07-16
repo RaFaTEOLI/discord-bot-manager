@@ -18,7 +18,7 @@ Here are some pictures of the project:
 ![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend.png?raw=true)
 
 # Light Theme
-![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend.png?raw=true)
+![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend-Light.png?raw=true)
 
 # New Command
 ![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend%20-%20Modal.png?raw=true)
