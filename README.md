@@ -8,7 +8,7 @@ This bot can play music on a discord server and also answer to some commands, yo
 - Play songs in discord channel
 - Create custom commands
 - Web interface
-- Custom themes
+- Dark/Light Theme
 
 When installing your own bot don't forget to change the env files, copy the .env.example from the backend and save as .env, change all the variables to suit yourself, also don't forget to change the frontend env file, the same way you did with the backend, except this time it should be called .env.local, then you'll be good to go.
 
