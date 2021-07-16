@@ -19,6 +19,7 @@ import CommandCard from '../../components/Card';
 import Modal from '../../components/Modal';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import Loading from '../../components/Loading';
 
 export interface ICommand {
   id: number;
@@ -44,6 +45,8 @@ function CommandsContainer() {
   const [types, setTypes] = useState<IType[]>([]);
   const [commands, setCommands] = useState<ICommand[]>([]);
 
+  const [loading, setLoading] = useState(true);
+
   const [show, setShow] = useState(false);
 
   const showModal = (): void => {
@@ -67,6 +70,7 @@ function CommandsContainer() {
   const fetchCommands = () => {
     api.get(`/commands`).then(response => {
       setCommands(response.data);
+      setLoading(false);
     });
   };
 
@@ -192,67 +196,73 @@ function CommandsContainer() {
 
   return (
     <>
-      <Container>
-        <FilterContainer>
-          <Filter handleChange={handleChange} />
-        </FilterContainer>
-        <ButtonContainer>
-          <Button onClick={showAddModal}>Add Command</Button>
-        </ButtonContainer>
-      </Container>
-      <ListCommandsContainer>
-        {filteredCommands.map(command => (
-          <CommandCard
-            key={command.id}
-            command={command.command}
-            description={command.description}
-            handleClick={() => editCommand(command.id)}
-          />
-        ))}
-      </ListCommandsContainer>
-      <Modal show={show} title='Command' handleClose={hideModal}>
+      {loading ? (
+        <Loading />
+      ) : (
         <>
-          <FormContainer>
-            <Input
-              name='command'
-              value={command}
-              onChange={event => setCommand(event.target.value)}
-              placeholder='Command'
-            />
-            <Input
-              name='description'
-              value={description}
-              onChange={event => setDescription(event.target.value)}
-              placeholder='Description'
-            />
-            <Select
-              data={['client', 'message']}
-              value={dispatcher}
-              placeholder='Dispatcher'
-              handleSelectChange={handleDispatcherChange}
-            />
-            <Select
-              data={formattedTypes}
-              placeholder='Type'
-              value={type}
-              handleSelectChange={handleTypeChange}
-            />
-            <Input
-              name='response'
-              onChange={event => setResponse(event.target.value)}
-              value={response}
-              placeholder='Response'
-            />
-            <Button onClick={submitForm}>Save</Button>
-            {commandId > 0 && (type === 'message' || type === 'music') && (
-              <Button type='danger' onClick={removeCommand}>
-                Remove
-              </Button>
-            )}
-          </FormContainer>
+          <Container>
+            <FilterContainer>
+              <Filter handleChange={handleChange} />
+            </FilterContainer>
+            <ButtonContainer>
+              <Button onClick={showAddModal}>Add Command</Button>
+            </ButtonContainer>
+          </Container>
+          <ListCommandsContainer>
+            {filteredCommands.map(command => (
+              <CommandCard
+                key={command.id}
+                command={command.command}
+                description={command.description}
+                handleClick={() => editCommand(command.id)}
+              />
+            ))}
+          </ListCommandsContainer>
+          <Modal show={show} title='Command' handleClose={hideModal}>
+            <>
+              <FormContainer>
+                <Input
+                  name='command'
+                  value={command}
+                  onChange={event => setCommand(event.target.value)}
+                  placeholder='Command'
+                />
+                <Input
+                  name='description'
+                  value={description}
+                  onChange={event => setDescription(event.target.value)}
+                  placeholder='Description'
+                />
+                <Select
+                  data={['client', 'message']}
+                  value={dispatcher}
+                  placeholder='Dispatcher'
+                  handleSelectChange={handleDispatcherChange}
+                />
+                <Select
+                  data={formattedTypes}
+                  placeholder='Type'
+                  value={type}
+                  handleSelectChange={handleTypeChange}
+                />
+                <Input
+                  name='response'
+                  onChange={event => setResponse(event.target.value)}
+                  value={response}
+                  placeholder='Response'
+                />
+                <Button onClick={submitForm}>Save</Button>
+                {commandId > 0 && (type === 'message' || type === 'music') && (
+                  <Button type='danger' onClick={removeCommand}>
+                    Remove
+                  </Button>
+                )}
+              </FormContainer>
+            </>
+          </Modal>
+          <ToastContainer />
         </>
-      </Modal>
-      <ToastContainer />
+      )}
     </>
   );
 }
