@@ -9,10 +9,16 @@ export const Container = styled.div`
 
 export const FilterContainer = styled.div`
   width: 85%;
+  @media screen and (max-width: 735px) {
+    width: 70%;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   width: 15%;
+  @media screen and (max-width: 735px) {
+    width: 30%;
+  }
 `;
 
 export const ListCommandsContainer = styled.div`

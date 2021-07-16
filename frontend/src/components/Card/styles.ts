@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   height: 80px;
   overflow: hidden;
   margin-bottom: 20px;
-  background-color: #264653;
+  background-color: ${props => props.theme.navbarColor};
 
   &:hover {
     cursor: pointer;

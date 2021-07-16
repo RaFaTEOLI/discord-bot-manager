@@ -8,6 +8,11 @@ export const PlayerContainer = styled.div`
   height: 95px;
   border-radius: 5px;
   padding: 10px;
+
+  @media screen and (max-width: 610px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 export const Playing = styled.div`
@@ -21,6 +26,20 @@ export const Playing = styled.div`
     color: #000;
     margin-bottom: 60px;
     padding: 5px;
+  }
+
+  @media screen and (max-width: 610px) {
+    img {
+      height: 40px;
+    }
+    p {
+      margin-top: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0px;
+      padding: 0px;
+    }
   }
 `;
 
@@ -45,6 +64,14 @@ export const MusicTitle = styled.div`
     margin: 0px;
     text-align: right;
   }
+
+  @media screen and (max-width: 610px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 export const Music = styled.div`
@@ -53,5 +80,11 @@ export const Music = styled.div`
 
   img {
     margin-left: 8px;
+  }
+
+  @media screen and (max-width: 610px) {
+    img {
+      display: none;
+    }
   }
 `;

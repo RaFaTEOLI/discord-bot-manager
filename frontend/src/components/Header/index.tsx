@@ -1,4 +1,5 @@
-import { HeaderContainer } from './styles';
+import Switch from '../Switch';
+import { HeaderContainer, LeftContainer } from './styles';
 
 interface HeaderProps {
   title: string | undefined;
@@ -10,9 +11,12 @@ const imgUrl = `https://robohash.org/${botName}?gravatar=hashed`;
 function Header({ title }: HeaderProps) {
   return (
     <HeaderContainer>
-      <>
+      <LeftContainer>
         <img src={imgUrl} alt='logo' />
         <h1>{title}</h1>
+      </LeftContainer>
+      <>
+        <Switch />
       </>
     </HeaderContainer>
   );

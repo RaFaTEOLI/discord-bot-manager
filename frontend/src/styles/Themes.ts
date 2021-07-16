@@ -1,15 +1,17 @@
 export const lightTheme = {
-  body: '#FFF',
+  body: '#03045e',
   text: '#000',
-  title: '#F77F00',
+  title: '#0077b6',
   border: '#A9A9A9',
   background: '#fff',
   backgroundColor: '#fff',
   modalBackgroundColor: 'rgba(0, 0, 0, 0.6)',
-  navbarColor: '#F0F0F0',
+  navbarColor: '#00b4d8',
   navbarHover: '#30343d',
-  inputBackground: '#4c6e7f',
-  descriptionColor: '#FCBF49',
+  inputBackground: '#fff',
+  descriptionColor: '#fff',
+  buttonColor: '#03045e',
+  buttonText: '#fff',
 };
 export const darkTheme = {
   body: '#363537',
@@ -23,4 +25,6 @@ export const darkTheme = {
   navbarHover: '#30343d',
   inputBackground: '#4c6e7f',
   descriptionColor: '#FCBF49',
+  buttonColor: '#FCBF49',
+  buttonText: '#000',
 };

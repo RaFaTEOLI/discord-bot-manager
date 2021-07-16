@@ -6,11 +6,12 @@ interface ButtonContainerProps {
 }
 
 export const ButtonContainer = styled.a<ButtonContainerProps>`
-  background: ${props => (props.type === 'danger' ? '#ff0000' : '#fcbf49')};
+  background: ${props =>
+    props.type === 'danger' ? '#ff0000' : props.theme.buttonColor};
   border-radius: 5px;
   border: 0;
   padding: 0 16px;
-  color: #000;
+  color: ${props => props.theme.buttonText};
   width: 100%;
   height: 40px;
   font-weight: 500;
@@ -24,6 +25,6 @@ export const ButtonContainer = styled.a<ButtonContainerProps>`
   justify-content: center;
 
   &:hover {
-    background: ${shade(0.2, '#fcbf49')};
+    background: ${props => shade(0.2, props.theme.buttonColor)};
   }
 `;
