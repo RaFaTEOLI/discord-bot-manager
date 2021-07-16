@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Message, Client } from 'discord.js';
+import { Message } from 'discord.js';
 import MusicController from './MusicController';
 import MessageController from './MessageController';
 import CommandsRepository from '../repository/CommandsRepository';
@@ -8,7 +8,7 @@ import bot from '../db/bot.json';
 import { Player } from 'discord-music-player';
 
 export interface ICommands {
-  id?: number;
+  id?: number | string;
   command: string;
   dispatcher: string;
   type: string;
@@ -25,7 +25,7 @@ export interface ICommand {
 
 class CommandsController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands);
+    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { command } = request.query;
     if (command) {
       return response.json(await commandsRepository.findByCommand(command));
@@ -36,13 +36,13 @@ class CommandsController {
 
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const commandsRepository = new CommandsRepository(commands);
+    const commandsRepository = new CommandsRepository(commands, 'commands');
     const data = await commandsRepository.findById(id);
     return response.json(data);
   }
 
   public async store(request: Request, _response: Response): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands);
+    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { command, description, dispatcher, type, response } = request.body;
     const data = await commandsRepository.store({
       command: `!${command}`,
@@ -51,6 +51,34 @@ class CommandsController {
       type,
       response,
     });
+    return _response.json(data);
+  }
+
+  public async update(
+    request: Request,
+    _response: Response
+  ): Promise<Response> {
+    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const { id } = request.params;
+    const { command, description, dispatcher, type, response } = request.body;
+    const data = await commandsRepository.update({
+      id,
+      command: `!${command}`,
+      description,
+      dispatcher,
+      type,
+      response,
+    });
+    return _response.json(data);
+  }
+
+  public async destroy(
+    request: Request,
+    _response: Response
+  ): Promise<Response> {
+    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const { id } = request.params;
+    const data = await commandsRepository.destroy(id);
     return _response.json(data);
   }
 
@@ -72,7 +100,7 @@ class CommandsController {
   public async executeCommand({ message, player, command }: ICommand) {
     const musicController = new MusicController();
     const messageController = new MessageController();
-    const commandsRepository = new CommandsRepository(commands);
+    const commandsRepository = new CommandsRepository(commands, 'commands');
 
     const cmdObj = await commandsRepository.findByCommand(command);
 
@@ -102,7 +130,7 @@ class CommandsController {
     message,
   }: ICommands) {
     try {
-      const commandsRepository = new CommandsRepository(commands);
+      const commandsRepository = new CommandsRepository(commands, 'commands');
       await commandsRepository.store({
         command: `!${command}`,
         description,

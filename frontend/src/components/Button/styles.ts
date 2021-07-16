@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const ButtonContainer = styled.a`
-  background: #fcbf49;
+interface ButtonContainerProps {
+  type?: string;
+}
+
+export const ButtonContainer = styled.a<ButtonContainerProps>`
+  background: ${props => (props.type === 'danger' ? '#ff0000' : '#fcbf49')};
   border-radius: 5px;
   border: 0;
   padding: 0 16px;

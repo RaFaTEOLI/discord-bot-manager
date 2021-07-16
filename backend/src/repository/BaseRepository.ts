@@ -1,15 +1,23 @@
 import path from 'path';
+import fs from 'fs/promises';
 
 class BaseRepository {
   protected db: Array<any>;
   protected path: string;
+  protected type: any;
 
-  public constructor(json: Array<any>) {
+  public constructor(json: Array<any>, type: any = null) {
     this.db = json;
     this.path = path.join(__dirname, '../db/');
+    this.type = type;
   }
 
   public async all() {
+    if (this.type) {
+      const buffer = await fs.readFile(this.path + '/commands.json');
+      return JSON.parse(buffer.toString());
+    }
+
     return this.db;
   }
 

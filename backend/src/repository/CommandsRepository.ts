@@ -19,6 +19,29 @@ class CommandsRepository extends BaseRepository {
     return { id, command, dispatcher, type, description, response };
   }
 
+  public async update({
+    id,
+    command,
+    dispatcher,
+    type,
+    description,
+    response,
+  }: ICommands) {
+    this.db.forEach(row => {
+      if (row.id == id) {
+        row.command = command;
+        row.dispatcher = dispatcher;
+        row.type = type;
+        row.description = description;
+        row.response = response;
+      }
+    });
+    await fs.writeFile(this.path + '/commands.json', JSON.stringify(this.db), {
+      encoding: 'utf8',
+    });
+    return { id, command, dispatcher, type, description, response };
+  }
+
   public async findByCommand(command: any) {
     const result = this.db.filter(obj => obj.command == `!${command}`);
     if (result.length) {
@@ -26,6 +49,17 @@ class CommandsRepository extends BaseRepository {
     } else {
       return {};
     }
+  }
+
+  public async destroy(id: string) {
+    const result = this.db.filter(obj => {
+      return obj.id != id;
+    });
+    this.db = result;
+    await fs.writeFile(this.path + '/commands.json', JSON.stringify(result), {
+      encoding: 'utf8',
+    });
+    return;
   }
 }
 

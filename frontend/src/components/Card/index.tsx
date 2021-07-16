@@ -2,14 +2,19 @@ import React from 'react';
 
 import { CardContainer, CardContent, InfoContainer } from './styles';
 
-interface CommandCardProps {
+type CommandCardProps = {
   command: string;
   description: string;
-}
+  handleClick?: any;
+};
 
-const CommandCard: React.FC<CommandCardProps> = ({ command, description }) => {
+const CommandCard: React.FC<CommandCardProps> = ({
+  command,
+  description,
+  handleClick,
+}) => {
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
       <CardContent>
         <h4>{command}</h4>
         <InfoContainer>
