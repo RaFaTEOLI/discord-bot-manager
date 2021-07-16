@@ -30,23 +30,22 @@ function MainContainer() {
         setBot(response.data[0]);
       }
     });
-  }, []);
 
-  useEffect(() => {
     api.get(`/music`).then(response => {
       if (response.data) {
         setMusic(response.data);
       }
     });
-  }, []);
 
-  setInterval(() => {
-    api.get(`/music`).then(response => {
-      if (response.data) {
-        setMusic(response.data);
-      }
-    });
-  }, 60000);
+    const interval = setInterval(() => {
+      api.get(`/music`).then(response => {
+        if (response.data) {
+          setMusic(response.data);
+        }
+      });
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
