@@ -14,6 +14,14 @@ When installing your own bot don't forget to change the env files, copy the .env
 
 Here are some pictures of the project:
 
+# Dark Theme
 ![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend.png?raw=true)
+
+# Light Theme
+![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend.png?raw=true)
+
+# New Command
 ![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/Frontend%20-%20Modal.png?raw=true)
+
+# API
 ![alt text](https://github.com/RaFaTEOLI/discord-bot-manager/blob/main/images/API.png?raw=true)
