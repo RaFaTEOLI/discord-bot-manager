@@ -20,7 +20,7 @@ interface IMusic {
   albumImage: string;
 }
 
-function MainContainer() {
+function Home() {
   const [bot, setBot] = useState<IBot>();
   const [music, setMusic] = useState<IMusic>();
 
@@ -62,4 +62,4 @@ function MainContainer() {
   );
 }
 
-export default MainContainer;
+export default Home;

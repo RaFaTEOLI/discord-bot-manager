@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from './styles/Themes';
 
 import ErrorBoundary from './components/ErrorBoundary';
 import Loading from './components/Loading';
-import MainContainer from './containers/MainContainer';
+import Home from './pages/Home';
 
 function App() {
   const [theme] = useDarkMode();
@@ -17,7 +17,7 @@ function App() {
         <GlobalStyle />
         <ErrorBoundary>
           <Suspense fallback={Loading}>
-            <MainContainer />
+            <Home />
           </Suspense>
         </ErrorBoundary>
       </ThemeProvider>
