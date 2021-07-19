@@ -5,7 +5,7 @@ interface HeaderProps {
   title: string | undefined;
 }
 
-const botName = 'Rubeo';
+const botName = process.env.REACT_APP_BOT_NAME;
 const imgUrl = `https://robohash.org/${botName}?gravatar=hashed`;
 
 function Header({ title }: HeaderProps) {

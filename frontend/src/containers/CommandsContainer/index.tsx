@@ -116,69 +116,101 @@ function CommandsContainer() {
   };
 
   const submitForm = () => {
-    if (command && type && description && dispatcher && response) {
-      if (commandId) {
-        api
-          .put(`/commands/${commandId}`, {
-            command: command.replaceAll('!', ''),
-            type,
-            description,
-            dispatcher,
-            response,
-          })
-          .then(response => {
-            if (response.data.id) {
-              fetchCommands();
-              toast.success('Command updated!');
-              hideModal();
-            } else {
-              toast.error('Error updating command!');
-            }
-          })
-          .catch(err => {
-            toast.error('Error creating command!');
-          });
-      } else {
-        api
-          .post(`/commands`, {
-            command: command.replaceAll('!', ''),
-            type,
-            description,
-            dispatcher,
-            response,
-          })
-          .then(response => {
-            if (response.data.id) {
-              fetchCommands();
-              toast.success('Command created!');
-              hideModal();
-            } else {
+    if (type === 'message' || type === 'music') {
+      if (command && type && description && dispatcher && response) {
+        if (commandId) {
+          api
+            .put(`/commands/${commandId}`, {
+              command: command.replaceAll('!', ''),
+              type,
+              description,
+              dispatcher,
+              response,
+            })
+            .then(response => {
+              if (response.data.id) {
+                fetchCommands();
+                toast.success('Command updated!');
+                hideModal();
+              } else {
+                toast.error('Error updating command!');
+              }
+            })
+            .catch(err => {
               toast.error('Error creating command!');
-            }
-          })
-          .catch(err => {
-            toast.error('Error creating command!');
-          });
+            });
+        } else {
+          api
+            .post(`/commands`, {
+              command: command.replaceAll('!', ''),
+              type,
+              description,
+              dispatcher,
+              response,
+            })
+            .then(response => {
+              if (response.data.id) {
+                fetchCommands();
+                toast.success('Command created!');
+                hideModal();
+              } else {
+                toast.error('Error creating command!');
+              }
+            })
+            .catch(err => {
+              toast.error('Error creating command!');
+            });
+        }
+      } else {
+        toast.error('All fields are required!');
       }
     } else {
-      toast.error('All fields are required!');
+      toast.error("You can't edit this command");
     }
   };
 
   const removeCommand = () => {
-    api
-      .delete(`/commands/${commandId}`)
-      .then(response => {
-        fetchCommands();
-        toast.success('Command deleted!');
-        // eslint-disable-next-line
-        const newCommands = commands.filter(command => command.id != commandId);
-        setCommands(newCommands);
-        hideModal();
-      })
-      .catch(err => {
-        toast.error('Error deleting command!');
-      });
+    if (type === 'message' || type === 'music') {
+      api
+        .delete(`/commands/${commandId}`)
+        .then(response => {
+          fetchCommands();
+          toast.success('Command deleted!');
+          const newCommands = commands.filter(
+            // eslint-disable-next-line
+            command => command.id != commandId
+          );
+          setCommands(newCommands);
+          hideModal();
+        })
+        .catch(err => {
+          toast.error('Error deleting command!');
+        });
+    } else {
+      toast.error("You can't remove this command");
+    }
+  };
+
+  const runCommand = () => {
+    const botName = process.env.REACT_APP_BOT_NAME;
+    const imgUrl = `https://robohash.org/${botName}?gravatar=hashed`;
+    const webHook = process.env.REACT_APP_WEBHOOK;
+    if (webHook) {
+      const requestBody = {
+        username: `${botName} Web`,
+        avatar_url: imgUrl,
+        content: `${command}`,
+      };
+      api
+        .post(webHook, requestBody)
+        .then(response => {
+          toast.success('Command ran!');
+          hideModal();
+        })
+        .catch(err => {
+          toast.error('Error running command!');
+        });
+    }
   };
 
   const formattedTypes = useMemo(() => {
@@ -252,6 +284,7 @@ function CommandsContainer() {
                   placeholder='Response'
                 />
                 <Button onClick={submitForm}>Save</Button>
+                {commandId > 0 && <Button onClick={runCommand}>Run</Button>}
                 {commandId > 0 && (type === 'message' || type === 'music') && (
                   <Button type='danger' onClick={removeCommand}>
                     Remove

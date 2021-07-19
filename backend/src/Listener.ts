@@ -18,10 +18,13 @@ const gameController = new GameController();
 const serverController = new ServerController();
 const musicController = new MusicController();
 
+const botName = process.env.BOT_NAME;
+
 console.log('✅  Bot running...');
 
 client.on('message', async message => {
-  if (message.author.bot) return;
+  if (message.author.bot && message.author.username !== `${botName} Web`)
+    return;
   if (!message.content.startsWith(prefix)) return;
 
   const commandBody: string = message.content.slice(prefix.length);
@@ -30,7 +33,7 @@ client.on('message', async message => {
 
   console.log(`Command: ${command}`);
   switch (command) {
-    case 'rubeo':
+    case botName.toLowerCase():
       await botController.me(message);
       break;
     case 'play':
