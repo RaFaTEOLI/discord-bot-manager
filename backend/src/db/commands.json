@@ -1,1 +1,228 @@
-[{"id":1,"command":"!bot","dispatcher":"message","type":"action","description":"Bot description","response":null},{"id":2,"command":"!play <link>","dispatcher":"message","type":"action","description":"Command to play music","response":null},{"id":3,"command":"!pause","dispatcher":"message","type":"action","description":"Command to pause the music","response":null},{"id":4,"command":"!resume","dispatcher":"message","type":"action","description":"Command to resume music","response":null},{"id":5,"command":"!shuffle","dispatcher":"message","type":"action","description":"Command to shuffle the queue","response":null},{"id":6,"command":"!playing","dispatcher":"message","type":"action","description":"Command to see what's playing","response":null},{"id":7,"command":"!addplaylist","dispatcher":"message","type":"action","description":"Command to add a playlist to the queue","response":null},{"id":8,"command":"!queue","dispatcher":"message","type":"action","description":"Command to see the queue","response":null},{"id":9,"command":"!skip","dispatcher":"message","type":"action","description":"Command to skip the music","response":null},{"id":10,"command":"!stop","dispatcher":"message","type":"action","description":"Command to stop the music and clear the queue","response":null},{"id":11,"command":"!addwin","dispatcher":"message","type":"action","description":"Command to add wins"},{"id":12,"command":"!resetwins","dispatcher":"message","type":"action","description":"Command to reset wins"},{"id":13,"command":"!wins","dispatcher":"message","type":"action","description":"Command to show the amount of wins"},{"id":14,"command":"!lofi","dispatcher":"client","type":"music","description":"Command to play Lofi playlist","response":"https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"},{"id":15,"command":"!carmusic","dispatcher":"client","type":"music","description":"Command to play Car Music playlist","response":"https://open.spotify.com/playlist/5Y9eVQ3u5rBAfL61OmsvDZ?si=11e22479ddcf40ca"},{"id":16,"command":"!lit","dispatcher":"client","type":"music","description":"Command to play LIT playlist","response":"https://open.spotify.com/playlist/7y47hwPaVMG3527fzdqeEz?si=199e272df1af4d7e"},{"id":17,"command":"!nostalgy","dispatcher":"client","type":"music","description":"Command to play Old But Old playlist","response":"https://open.spotify.com/playlist/0aIH01fiJYjb23FCGuleNf?si=bdb26051d4ec47eb"},{"id":18,"command":"!deephouse","dispatcher":"client","type":"music","description":"Command to play Deep House Hits playlist","response":"https://open.spotify.com/playlist/2t5U3e6mHq4T2fKXknS4dd?si=2949ab1e236344b5"},{"id":19,"command":"!chillout","dispatcher":"client","type":"music","description":"Command to play Chillout playlist","response":"https://open.spotify.com/playlist/3r40MPFi8fCAHPrxrb9f3I?si=05Tl5vbIRZqIwrDKIv1zsg"},{"id":20,"command":"!nightdrive","dispatcher":"client","type":"music","description":"Command to play Night Drive playlist","response":"https://open.spotify.com/playlist/18GJyqIBkRWeR1Z57sXQDq?si=tWwlOMrDRxeU-96WHIkLmA"},{"id":21,"command":"!nightdrive2","dispatcher":"client","type":"music","description":"Command to play Night Drive playlist","response":"https://open.spotify.com/playlist/55kXFRgaWu8Vu0ko7CfbXB?si=cf467669338d48ff"},{"id":22,"command":"!deepstrangefruits","dispatcher":"client","type":"music","description":"Command to play Deep Strange Fruits playlist","response":"https://open.spotify.com/playlist/6xGLprv9fmlMgeAMpW0x51?si=3kBlZr9NR0muCzttljjP7A"},{"id":23,"command":"!rocketleague","dispatcher":"client","type":"music","description":"Command to play RocketLeague playlist","response":"https://open.spotify.com/playlist/5A7t00DC3dP7htDmFsjF2I?si=28eb317fac49422d"},{"id":24,"command":"!game","dispatcher":"message","type":"action","description":"Command to show the current game"},{"id":25,"command":"!setgame <callofduty>","dispatcher":"message","type":"action","description":"Command to set the current game"},{"id":26,"command":"!resetgame","dispatcher":"message","type":"action","description":"Command to reset the current game"},{"id":27,"command":"!addcommand","dispatcher":"message","type":"action","description":"Command to create a new command","response":null},{"id":28,"command":"!helpcommand","dispatcher":"message","type":"action","description":"Command to help with the creation of a new command","response":null},{"id":29,"command":"!invisible","dispatcher":"client","type":"music","description":"Play the music invisible","response":"https://open.spotify.com/track/2BgagqJWYfrKPhz3f5V0Sw?si=47f07de2ac584184"}]
+[
+  {
+    "id": 1,
+    "command": "!rubeo",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Bot description",
+    "response": null
+  },
+  {
+    "id": 2,
+    "command": "!play <link>",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to play music",
+    "response": null
+  },
+  {
+    "id": 3,
+    "command": "!pause",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to pause the music",
+    "response": null
+  },
+  {
+    "id": 4,
+    "command": "!resume",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to resume music",
+    "response": null
+  },
+  {
+    "id": 5,
+    "command": "!shuffle",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to shuffle the queue",
+    "response": null
+  },
+  {
+    "id": 6,
+    "command": "!playing",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to see what's playing",
+    "response": null
+  },
+  {
+    "id": 7,
+    "command": "!addplaylist",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to add a playlist to the queue",
+    "response": null
+  },
+  {
+    "id": 8,
+    "command": "!queue",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to see the queue",
+    "response": null
+  },
+  {
+    "id": 9,
+    "command": "!skip",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to skip the music",
+    "response": null
+  },
+  {
+    "id": 10,
+    "command": "!stop",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to stop the music and clear the queue",
+    "response": null
+  },
+  {
+    "id": 11,
+    "command": "!addwin",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to add wins"
+  },
+  {
+    "id": 12,
+    "command": "!resetwins",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to reset wins"
+  },
+  {
+    "id": 13,
+    "command": "!wins",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to show the amount of wins"
+  },
+  {
+    "id": 14,
+    "command": "!lofi",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Lofi playlist",
+    "response": "https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"
+  },
+  {
+    "id": 15,
+    "command": "!carmusic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Car Music playlist",
+    "response": "https://open.spotify.com/playlist/5Y9eVQ3u5rBAfL61OmsvDZ?si=11e22479ddcf40ca"
+  },
+  {
+    "id": 16,
+    "command": "!lit",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play LIT playlist",
+    "response": "https://open.spotify.com/playlist/7y47hwPaVMG3527fzdqeEz?si=199e272df1af4d7e"
+  },
+  {
+    "id": 17,
+    "command": "!nostalgy",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Old But Old playlist",
+    "response": "https://open.spotify.com/playlist/0aIH01fiJYjb23FCGuleNf?si=bdb26051d4ec47eb"
+  },
+  {
+    "id": 18,
+    "command": "!deephouse",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Deep House Hits playlist",
+    "response": "https://open.spotify.com/playlist/2t5U3e6mHq4T2fKXknS4dd?si=2949ab1e236344b5"
+  },
+  {
+    "id": 19,
+    "command": "!chillout",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Chillout playlist",
+    "response": "https://open.spotify.com/playlist/3r40MPFi8fCAHPrxrb9f3I?si=05Tl5vbIRZqIwrDKIv1zsg"
+  },
+  {
+    "id": 20,
+    "command": "!nightdrive",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Night Drive playlist",
+    "response": "https://open.spotify.com/playlist/18GJyqIBkRWeR1Z57sXQDq?si=tWwlOMrDRxeU-96WHIkLmA"
+  },
+  {
+    "id": 21,
+    "command": "!nightdrive2",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Night Drive playlist",
+    "response": "https://open.spotify.com/playlist/55kXFRgaWu8Vu0ko7CfbXB?si=cf467669338d48ff"
+  },
+  {
+    "id": 22,
+    "command": "!deepstrangefruits",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Deep Strange Fruits playlist",
+    "response": "https://open.spotify.com/playlist/6xGLprv9fmlMgeAMpW0x51?si=3kBlZr9NR0muCzttljjP7A"
+  },
+  {
+    "id": 23,
+    "command": "!rocketleague",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play RocketLeague playlist",
+    "response": "https://open.spotify.com/playlist/5A7t00DC3dP7htDmFsjF2I?si=28eb317fac49422d"
+  },
+  {
+    "id": 24,
+    "command": "!game",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to show the current game"
+  },
+  {
+    "id": 25,
+    "command": "!setgame <callofduty>",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to set the current game"
+  },
+  {
+    "id": 26,
+    "command": "!resetgame",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to reset the current game"
+  },
+  {
+    "id": 27,
+    "command": "!addcommand",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to create a new command",
+    "response": null
+  },
+  {
+    "id": 28,
+    "command": "!helpcommand",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to help with the creation of a new command",
+    "response": null
+  },
+  {
+    "id": 29,
+    "command": "!invisible",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Play the music invisible",
+    "response": "https://open.spotify.com/track/2BgagqJWYfrKPhz3f5V0Sw?si=47f07de2ac584184"
+  }
+]
