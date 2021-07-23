@@ -2,9 +2,11 @@ import { Request, Response } from 'express';
 const Discord = require('discord.js');
 import { Message } from 'discord.js';
 import BotRepository from '../repository/BotRepository';
+import CommandsRepository from '../repository/CommandsRepository';
 import bot from '../db/bot.json';
 import commands from '../db/commands.json';
 import types from '../db/types.json';
+import { ICommands } from './CommandsController';
 
 interface ITypes {
   name: string;
@@ -38,7 +40,10 @@ class BotController {
     const Embed = new Discord.MessageEmbed();
     Embed.setTitle(this.bot[0].description);
 
-    commands.forEach(command => {
+    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsResults = await commandsRepository.all();
+
+    commandsResults.forEach((command: ICommands) => {
       Embed.addField(command.command, command.description);
     });
 
