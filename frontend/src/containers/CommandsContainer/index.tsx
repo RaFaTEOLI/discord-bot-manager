@@ -107,6 +107,7 @@ function CommandsContainer() {
   };
 
   const showAddModal = () => {
+    setCommandId(0);
     setCommand('');
     setDescription('');
     setDispatcher('');
