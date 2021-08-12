@@ -63,6 +63,9 @@ client.on('message', async message => {
     case 'stop':
       await musicController.stop(player, message);
       break;
+    case 'playlists':
+      await botController.playlists(message);
+      break;
     case 'game':
       await gameController.getGame(message);
       break;

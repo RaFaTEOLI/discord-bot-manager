@@ -61,6 +61,28 @@ class CommandsRepository extends BaseRepository {
     });
     return;
   }
+
+  public async findByType(type: string) {
+    if (this.type) {
+      const buffer = await fs.readFile(this.path + '/commands.json');
+      return JSON.parse(buffer.toString()).filter(
+        (obj: ICommands) => obj.type == type
+      );
+    }
+
+    return this.db.filter((obj: ICommands) => obj.type == type);
+  }
+
+  public async findNotInType(type: string) {
+    if (this.type) {
+      const buffer = await fs.readFile(this.path + '/commands.json');
+      return JSON.parse(buffer.toString()).filter(
+        (obj: ICommands) => obj.type != type
+      );
+    }
+
+    return this.db.filter((obj: ICommands) => obj.type != type);
+  }
 }
 
 export default CommandsRepository;

@@ -41,7 +41,22 @@ class BotController {
     Embed.setTitle(this.bot[0].description);
 
     const commandsRepository = new CommandsRepository(commands, 'commands');
-    const commandsResults = await commandsRepository.all();
+    const commandsResults = await commandsRepository.findNotInType('music');
+
+    console.log(commandsResults);
+    commandsResults.forEach((command: ICommands) => {
+      Embed.addField(command.command, command.description);
+    });
+
+    message.channel.send(Embed);
+  }
+
+  public async playlists(message: Message) {
+    const Embed = new Discord.MessageEmbed();
+    Embed.setTitle('My Playlists');
+
+    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsResults = await commandsRepository.findByType('music');
 
     commandsResults.forEach((command: ICommands) => {
       Embed.addField(command.command, command.description);

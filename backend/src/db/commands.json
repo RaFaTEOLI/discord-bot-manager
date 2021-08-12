@@ -81,27 +81,35 @@
   },
   {
     "id": 11,
+    "command": "!playlists",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to show available playlists",
+    "response": null
+  },
+  {
+    "id": 12,
     "command": "!addwin",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to add wins"
   },
   {
-    "id": 12,
+    "id": 13,
     "command": "!resetwins",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to reset wins"
   },
   {
-    "id": 13,
+    "id": 14,
     "command": "!wins",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to show the amount of wins"
   },
   {
-    "id": 14,
+    "id": 15,
     "command": "!lofi",
     "dispatcher": "client",
     "type": "music",
@@ -109,7 +117,7 @@
     "response": "https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"
   },
   {
-    "id": 15,
+    "id": 16,
     "command": "!carmusic",
     "dispatcher": "client",
     "type": "music",
@@ -117,7 +125,7 @@
     "response": "https://open.spotify.com/playlist/5Y9eVQ3u5rBAfL61OmsvDZ?si=11e22479ddcf40ca"
   },
   {
-    "id": 16,
+    "id": 17,
     "command": "!lit",
     "dispatcher": "client",
     "type": "music",
@@ -125,7 +133,7 @@
     "response": "https://open.spotify.com/playlist/7y47hwPaVMG3527fzdqeEz?si=199e272df1af4d7e"
   },
   {
-    "id": 17,
+    "id": 18,
     "command": "!nostalgy",
     "dispatcher": "client",
     "type": "music",
@@ -133,7 +141,7 @@
     "response": "https://open.spotify.com/playlist/0aIH01fiJYjb23FCGuleNf?si=bdb26051d4ec47eb"
   },
   {
-    "id": 18,
+    "id": 19,
     "command": "!deephouse",
     "dispatcher": "client",
     "type": "music",
@@ -141,7 +149,7 @@
     "response": "https://open.spotify.com/playlist/2t5U3e6mHq4T2fKXknS4dd?si=2949ab1e236344b5"
   },
   {
-    "id": 19,
+    "id": 20,
     "command": "!chillout",
     "dispatcher": "client",
     "type": "music",
@@ -149,7 +157,7 @@
     "response": "https://open.spotify.com/playlist/3r40MPFi8fCAHPrxrb9f3I?si=05Tl5vbIRZqIwrDKIv1zsg"
   },
   {
-    "id": 20,
+    "id": 21,
     "command": "!nightdrive",
     "dispatcher": "client",
     "type": "music",
@@ -157,7 +165,7 @@
     "response": "https://open.spotify.com/playlist/18GJyqIBkRWeR1Z57sXQDq?si=tWwlOMrDRxeU-96WHIkLmA"
   },
   {
-    "id": 21,
+    "id": 22,
     "command": "!nightdrive2",
     "dispatcher": "client",
     "type": "music",
@@ -165,7 +173,7 @@
     "response": "https://open.spotify.com/playlist/55kXFRgaWu8Vu0ko7CfbXB?si=cf467669338d48ff"
   },
   {
-    "id": 22,
+    "id": 23,
     "command": "!deepstrangefruits",
     "dispatcher": "client",
     "type": "music",
@@ -173,7 +181,7 @@
     "response": "https://open.spotify.com/playlist/6xGLprv9fmlMgeAMpW0x51?si=3kBlZr9NR0muCzttljjP7A"
   },
   {
-    "id": 23,
+    "id": 24,
     "command": "!rocketleague",
     "dispatcher": "client",
     "type": "music",
@@ -181,28 +189,28 @@
     "response": "https://open.spotify.com/playlist/5A7t00DC3dP7htDmFsjF2I?si=28eb317fac49422d"
   },
   {
-    "id": 24,
+    "id": 25,
     "command": "!game",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to show the current game"
   },
   {
-    "id": 25,
+    "id": 26,
     "command": "!setgame <callofduty>",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to set the current game"
   },
   {
-    "id": 26,
+    "id": 27,
     "command": "!resetgame",
     "dispatcher": "message",
     "type": "action",
     "description": "Command to reset the current game"
   },
   {
-    "id": 27,
+    "id": 28,
     "command": "!addcommand",
     "dispatcher": "message",
     "type": "action",
@@ -210,7 +218,7 @@
     "response": null
   },
   {
-    "id": 28,
+    "id": 29,
     "command": "!helpcommand",
     "dispatcher": "message",
     "type": "action",
@@ -218,11 +226,27 @@
     "response": null
   },
   {
-    "id": 29,
+    "id": 30,
     "command": "!invisible",
     "dispatcher": "client",
     "type": "music",
     "description": "Play the music invisible",
     "response": "https://open.spotify.com/track/2BgagqJWYfrKPhz3f5V0Sw?si=47f07de2ac584184"
+  },
+  {
+    "id": 31,
+    "command": "!pagode",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Play the pagode playlist",
+    "response": "https://open.spotify.com/playlist/3V07mgTLdNgCRrXTEXtLKI?si=dd2c2d6c856b4563"
+  },
+  {
+    "id": 32,
+    "command": "!minecraftserver",
+    "dispatcher": "message",
+    "type": "message",
+    "description": "Command to return minecraft server's ip",
+    "response": "0.0.0.0:25565"
   }
 ]
