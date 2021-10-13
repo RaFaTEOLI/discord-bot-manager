@@ -54,11 +54,11 @@ class SpotifyController {
       );
 
       const spotifyItem = itemResponse.data.tracks.items.map((item: any) => {
-        if (item.artists[0].name == bandName) {
+        if (item?.artists[0].name == bandName) {
           return {
-            id: item.id,
-            name: item.name,
-            artist: item.artists[0].name,
+            id: item?.id,
+            name: item?.name,
+            artist: item?.artists[0].name,
           };
         }
       });

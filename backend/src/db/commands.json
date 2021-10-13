@@ -248,5 +248,13 @@
     "type": "message",
     "description": "Command to return minecraft server's ip",
     "response": "0.0.0.0:25565"
+  },
+  {
+    "id": 33,
+    "command": "!nightdrivemusic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Night Drive Music playlist",
+    "response": "https://open.spotify.com/playlist/2ATLME9rzaswBjYMQC9Xcp?si=1699a41f21594783"
   }
 ]

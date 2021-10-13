@@ -38,7 +38,8 @@ class MusicController {
     });
     await player.playlist(message, {
       search: url,
-      maxSongs: 400,
+      maxSongs: -1,
+      shuffle: true,
     });
   }
 
@@ -80,7 +81,7 @@ class MusicController {
   ) {
     await player.playlist(message, {
       search: args.join(' '),
-      maxSongs: -1,
+      maxSongs: 500,
     });
   }
 

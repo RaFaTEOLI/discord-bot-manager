@@ -267,6 +267,12 @@ player
           .setTitle('Not an object!');
         message.channel.send(exampleEmbed);
         break;
+      case 'Status code: 410':
+        var exampleEmbed = new Discord.MessageEmbed()
+          .setColor('#0099ff')
+          .setTitle('Oops! Resource Unavailable!');
+        message.channel.send(exampleEmbed);
+        break;
       // Thrown when the Guild Queue does not exist (no music is playing).
       default:
         var exampleEmbed = new Discord.MessageEmbed()

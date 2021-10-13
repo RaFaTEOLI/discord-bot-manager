@@ -36,9 +36,12 @@ class MusicRepository extends BaseRepository {
       this.db[0].albumImage = null;
     }
 
-    await fs.writeFile(this.path + '/music.json', JSON.stringify(this.db), {
-      encoding: 'utf8',
-    });
+    if (this.db) {
+      console.log('Writing new file:', JSON.stringify(this.db));
+      await fs.writeFile(this.path + '/music.json', JSON.stringify(this.db), {
+        encoding: 'utf8',
+      });
+    }
     console.log('DB:', this.db);
     return this.db[0];
   }
