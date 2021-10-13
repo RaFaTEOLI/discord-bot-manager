@@ -37,7 +37,7 @@ function Sidebar() {
 
     const interval = setInterval(() => {
       loadServer();
-    }, 60000);
+    }, 300000);
     return () => clearInterval(interval);
   }, []);
 
