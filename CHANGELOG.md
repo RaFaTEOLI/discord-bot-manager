@@ -10,5 +10,6 @@
 
 *  fixed bugs ([`4e1e69b`](https://github.com/RaFaTEOLI/discord-bot-manager/commit/4e1e69bd5d0d6989f7a633e0678e672cc753c98f))
 *  fixed sidebar with no data ([`db3bd2a`](https://github.com/RaFaTEOLI/discord-bot-manager/commit/db3bd2a64a55eb968c3e7da5588f0d1332fb8697))
+*  increased interval time from 1 minute to 5 due to rate limiting ([`9f0eaeb`](https://github.com/RaFaTEOLI/discord-bot-manager/commit/9f0eaebaa15be17d9eb9b64017323cd050ca471e))
 
 
