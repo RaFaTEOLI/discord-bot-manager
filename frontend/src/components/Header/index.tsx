@@ -3,12 +3,14 @@ import { HeaderContainer, LeftContainer } from './styles';
 
 interface HeaderProps {
   title: string | undefined;
+  handleToggle: () => void;
+  theme: string;
 }
 
 const botName = process.env.REACT_APP_BOT_NAME;
 const imgUrl = `https://robohash.org/${botName}?gravatar=hashed`;
 
-function Header({ title }: HeaderProps) {
+function Header({ title, handleToggle, theme }: HeaderProps) {
   return (
     <HeaderContainer>
       <LeftContainer>
@@ -16,7 +18,7 @@ function Header({ title }: HeaderProps) {
         <h1>{title}</h1>
       </LeftContainer>
       <>
-        <Switch />
+        <Switch theme={theme} handleToggle={handleToggle} />
       </>
     </HeaderContainer>
   );

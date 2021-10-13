@@ -6,7 +6,7 @@ import Loading from '../../components/Loading';
 
 import CommandsContainer from '../../containers/CommandsContainer';
 
-import { Content } from './styles';
+import { HomeContent } from './styles';
 
 import api from '../../services/api';
 
@@ -22,7 +22,12 @@ interface IMusic {
   albumImage: string;
 }
 
-function Home() {
+interface HomeProps {
+  handleToggle: () => void;
+  theme: string;
+}
+
+function Home({ handleToggle, theme }: HomeProps) {
   const [bot, setBot] = useState<IBot>();
   const [music, setMusic] = useState<IMusic>();
 
@@ -60,15 +65,15 @@ function Home() {
         <Loading />
       ) : (
         <>
-          <Header title={bot?.name} />
-          <Content>
+          <Header theme={theme} handleToggle={handleToggle} title={bot?.name} />
+          <HomeContent>
             <Player
               name={music?.name}
               artist={music?.artist}
               albumImage={music?.albumImage}
             />
             <CommandsContainer />
-          </Content>
+          </HomeContent>
         </>
       )}
     </>

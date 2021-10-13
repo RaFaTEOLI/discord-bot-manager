@@ -12,6 +12,7 @@ import {
   ButtonContainer,
   ListCommandsContainer,
   FormContainer,
+  ContentContainer,
 } from './styles';
 
 import api from '../../services/api';
@@ -20,6 +21,7 @@ import Modal from '../../components/Modal';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import Loading from '../../components/Loading';
+import Sidebar from '../../components/Sidebar';
 
 export interface ICommand {
   id: number;
@@ -241,16 +243,19 @@ function CommandsContainer() {
               <Button onClick={showAddModal}>Add Command</Button>
             </ButtonContainer>
           </Container>
-          <ListCommandsContainer>
-            {filteredCommands.map(command => (
-              <CommandCard
-                key={command.id}
-                command={command.command}
-                description={command.description}
-                handleClick={() => editCommand(command.id)}
-              />
-            ))}
-          </ListCommandsContainer>
+          <ContentContainer>
+            <ListCommandsContainer>
+              {filteredCommands.map(command => (
+                <CommandCard
+                  key={command.id}
+                  command={command.command}
+                  description={command.description}
+                  handleClick={() => editCommand(command.id)}
+                />
+              ))}
+            </ListCommandsContainer>
+            <Sidebar />
+          </ContentContainer>
           <Modal show={show} title='Command' handleClose={hideModal}>
             <>
               <FormContainer>

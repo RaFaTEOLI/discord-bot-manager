@@ -3,8 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-top: 5px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+`;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const FilterContainer = styled.div`
