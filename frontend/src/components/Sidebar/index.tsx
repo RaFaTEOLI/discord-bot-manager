@@ -30,23 +30,33 @@ function Sidebar() {
       setChannels(response.data.channels);
     });
   }, []);
-  return (
+
+  return members || channels ? (
     <SidebarContainer>
-      <h4>Available Members</h4>
-      {members?.map((member: IMember) => (
-        <MemberCard
-          key={member.id}
-          member={member.username}
-          avatar={member.avatar_url}
-          status={member.status}
-        />
-      ))}
-      <h4>Channels</h4>
-      {channels?.map((channel: IChannel) => (
-        <ChannelCard key={channel.id} name={channel.name} />
-      ))}
+      {members && (
+        <>
+          <h4>Available Members</h4>
+          {members?.map((member: IMember) => (
+            <MemberCard
+              key={member.id}
+              member={member.username}
+              avatar={member.avatar_url}
+              status={member.status}
+            />
+          ))}
+        </>
+      )}
+
+      {channels && (
+        <>
+          <h4>Channels</h4>
+          {channels?.map((channel: IChannel) => (
+            <ChannelCard key={channel.id} name={channel.name} />
+          ))}
+        </>
+      )}
     </SidebarContainer>
-  );
+  ) : null;
 }
 
 export default Sidebar;
