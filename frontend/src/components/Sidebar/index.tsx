@@ -23,13 +23,19 @@ function Sidebar() {
   const [members, setMembers] = useState<Array<IMember>>();
   const [channels, setChannels] = useState<Array<IChannel>>();
 
-  useEffect(() => {
+  const loadServer = () => {
     axios.get(apiUrl).then(response => {
       console.log(response);
       setMembers(response.data.members);
       setChannels(response.data.channels);
     });
+  };
+
+  useEffect(() => {
+    loadServer();
   }, []);
+
+  setInterval(loadServer, 60000);
 
   return members || channels ? (
     <SidebarContainer>
