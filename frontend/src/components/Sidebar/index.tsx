@@ -24,8 +24,9 @@ function Sidebar() {
   const [channels, setChannels] = useState<Array<IChannel>>();
 
   const loadServer = () => {
+    console.log('Loading Server...');
     axios.get(apiUrl).then(response => {
-      console.log(response);
+      console.log(response.data);
       setMembers(response.data.members);
       setChannels(response.data.channels);
     });
@@ -33,9 +34,12 @@ function Sidebar() {
 
   useEffect(() => {
     loadServer();
-  }, []);
 
-  setInterval(loadServer, 60000);
+    const interval = setInterval(() => {
+      loadServer();
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   return members || channels ? (
     <SidebarContainer>
