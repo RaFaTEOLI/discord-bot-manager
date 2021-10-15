@@ -6,9 +6,17 @@ type MemberCardProps = {
   member: string;
   avatar: string;
   status: string;
+  game?: {
+    name: string;
+  };
 };
 
-const MemberCard: React.FC<MemberCardProps> = ({ member, avatar, status }) => {
+const MemberCard: React.FC<MemberCardProps> = ({
+  member,
+  avatar,
+  status,
+  game,
+}) => {
   return (
     <CardContainer>
       <CardContent status={status}>
@@ -16,7 +24,10 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, avatar, status }) => {
         <div>
           <h4>{member}</h4>
           <InfoContainer status={status}>
-            <span>{status === 'dnd' ? 'Busy' : 'Online'}</span>
+            <span>
+              {status === 'dnd' ? 'Busy' : 'Online'}
+              {game?.name && ` - ${game.name}`}
+            </span>
           </InfoContainer>
         </div>
       </CardContent>

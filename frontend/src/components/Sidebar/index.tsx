@@ -9,6 +9,9 @@ interface IMember {
   username: string;
   status: string;
   avatar_url: string;
+  game?: {
+    name: string;
+  };
 }
 
 interface IChannel {
@@ -52,6 +55,7 @@ function Sidebar() {
               member={member.username}
               avatar={member.avatar_url}
               status={member.status}
+              game={member.game}
             />
           ))}
         </>
