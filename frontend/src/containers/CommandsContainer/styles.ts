@@ -11,6 +11,11 @@ export const Container = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 735px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const FilterContainer = styled.div`
