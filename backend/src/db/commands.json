@@ -256,5 +256,29 @@
     "type": "music",
     "description": "Command to play Night Drive Music playlist",
     "response": "https://open.spotify.com/playlist/2ATLME9rzaswBjYMQC9Xcp?si=1699a41f21594783"
+  },
+  {
+    "id": 34,
+    "command": "!darkeletronic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Dark Eletronic Beats playlist",
+    "response": "https://open.spotify.com/playlist/0bHmCeYImRqGQoGz8clIah?si=d02c5e94a52e442a"
+  },
+  {
+    "id": 35,
+    "command": "!gamingmusic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Gaming Music playlist",
+    "response": "https://open.spotify.com/playlist/5AHH67GYsljwoB1q6UGvWg?si=23b2f18597cc4ba2"
+  },
+  {
+    "id": 36,
+    "command": "!edmhits",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play EDM Hits playlist",
+    "response": "https://open.spotify.com/playlist/2NIe54HdwR5msTjrlHG1Lt?si=190b01081ea34bbc"
   }
 ]

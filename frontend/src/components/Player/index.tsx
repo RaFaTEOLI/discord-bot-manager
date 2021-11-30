@@ -18,10 +18,17 @@ interface PlayerProps {
   name?: string;
   artist?: string;
   albumImage?: string;
+  getMusic: () => void;
 }
 
-function Player({ name, artist, albumImage }: PlayerProps) {
+function Player({ name, artist, albumImage, getMusic }: PlayerProps) {
   const [paused, setPaused] = useState<boolean>(false);
+
+  const wait = (timeout: number) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  };
 
   const runCommand = useCallback(
     (command: string) => {
@@ -43,13 +50,16 @@ function Player({ name, artist, albumImage }: PlayerProps) {
           .post(webHook, requestBody)
           .then(() => {
             toast.success('Command ran!');
+            if (command === '!skip') {
+              wait(8000).then(() => getMusic());
+            }
           })
           .catch(() => {
             toast.error('Error running command!');
           });
       }
     },
-    [setPaused]
+    [setPaused, getMusic]
   );
 
   return (

@@ -33,6 +33,15 @@ function Home({ handleToggle, theme }: HomeProps) {
 
   const [loading, setLoading] = useState(true);
 
+  const getMusic = () => {
+    api.get(`/music`).then(response => {
+      if (response.data) {
+        setMusic(response.data);
+        setLoading(false);
+      }
+    });
+  };
+
   useEffect(() => {
     api.get(`/bot`).then(response => {
       if (response.data) {
@@ -41,12 +50,7 @@ function Home({ handleToggle, theme }: HomeProps) {
       }
     });
 
-    api.get(`/music`).then(response => {
-      if (response.data) {
-        setMusic(response.data);
-        setLoading(false);
-      }
-    });
+    getMusic();
 
     const interval = setInterval(() => {
       api.get(`/music`).then(response => {
@@ -71,6 +75,7 @@ function Home({ handleToggle, theme }: HomeProps) {
               name={music?.name}
               artist={music?.artist}
               albumImage={music?.albumImage}
+              getMusic={getMusic}
             />
             <CommandsContainer />
           </HomeContent>

@@ -10,7 +10,7 @@ export const SidebarContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 80%;
+  width: 40vh;
   padding: 12px;
 
   h1 {

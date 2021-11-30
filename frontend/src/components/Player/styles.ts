@@ -12,12 +12,15 @@ export const PlayerContainer = styled.div`
   @media screen and (max-width: 610px) {
     flex-direction: column;
     height: 100%;
+    justify-content: center;
   }
 `;
 
 export const Playing = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 40vh;
   img {
     height: 58px;
   }
@@ -29,6 +32,7 @@ export const Playing = styled.div`
   }
 
   @media screen and (max-width: 610px) {
+    justify-content: center;
     img {
       height: 40px;
     }
@@ -54,6 +58,13 @@ export const Controls = styled.div`
       cursor: pointer;
     }
   }
+
+  @media screen and (max-width: 803px) {
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
 `;
 
 export const MusicTitle = styled.div`
@@ -77,12 +88,15 @@ export const MusicTitle = styled.div`
 export const Music = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 40vh;
 
   img {
     margin-left: 8px;
   }
 
   @media screen and (max-width: 610px) {
+    justify-content: center;
     img {
       display: none;
     }

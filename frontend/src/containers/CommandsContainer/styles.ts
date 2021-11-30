@@ -37,6 +37,11 @@ export const ListCommandsContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  width: 200vh;
+
+  @media screen and (max-width: 735px) {
+    width: 90%;
+  }
 `;
 
 export const FormContainer = styled.form`
