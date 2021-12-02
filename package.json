@@ -1,6 +1,9 @@
 {
   "name": "discord-manager-bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "description": "Discord Bot and Rest API",
+  "author": "Rafael Tessarolo",
+  "license": "MIT",
   "devDependencies": {
     "auto-changelog": "^2.3.0"
   },
