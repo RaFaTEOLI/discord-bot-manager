@@ -8,7 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Loading from './components/Loading';
 import Home from './pages/Home';
 
-function App() {
+const App = () => {
   const [theme, themeToggler] = useDarkMode();
   const themeMode = theme === 'dark' ? darkTheme : lightTheme;
 
@@ -16,17 +16,15 @@ function App() {
     themeToggler();
   }, [themeToggler]);
   return (
-    <>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyle />
-        <ErrorBoundary>
-          <Suspense fallback={Loading}>
-            <Home theme={theme} handleToggle={handleToggle} />
-          </Suspense>
-        </ErrorBoundary>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
+      <ErrorBoundary>
+        <Suspense fallback={Loading}>
+          <Home theme={theme} handleToggle={handleToggle} />
+        </Suspense>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

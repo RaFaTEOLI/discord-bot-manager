@@ -9,6 +9,7 @@ import CommandsContainer from '../../containers/CommandsContainer';
 import { HomeContent } from './styles';
 
 import api from '../../services/api';
+import QueueContainer from '../../containers/QueueContainer';
 
 interface IBot {
   name: string;
@@ -27,14 +28,23 @@ interface HomeProps {
   theme: string;
 }
 
-function Home({ handleToggle, theme }: HomeProps) {
+const Home = ({ handleToggle, theme }: HomeProps) => {
   const [bot, setBot] = useState<IBot>();
   const [music, setMusic] = useState<IMusic>();
+  const [show, setShow] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
+  const showModal = (): void => {
+    setShow(true);
+  };
+
+  const hideModal = (): void => {
+    setShow(false);
+  };
+
   const getMusic = () => {
-    api.get(`/music`).then(response => {
+    api.get('/music').then(response => {
       if (response.data) {
         setMusic(response.data);
         setLoading(false);
@@ -43,7 +53,7 @@ function Home({ handleToggle, theme }: HomeProps) {
   };
 
   useEffect(() => {
-    api.get(`/bot`).then(response => {
+    api.get('/bot').then(response => {
       if (response.data) {
         setBot(response.data[0]);
         setLoading(false);
@@ -53,7 +63,7 @@ function Home({ handleToggle, theme }: HomeProps) {
     getMusic();
 
     const interval = setInterval(() => {
-      api.get(`/music`).then(response => {
+      api.get('/music').then(response => {
         if (response.data) {
           setMusic(response.data);
           setLoading(false);
@@ -64,6 +74,7 @@ function Home({ handleToggle, theme }: HomeProps) {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {loading ? (
         <Loading />
@@ -76,13 +87,15 @@ function Home({ handleToggle, theme }: HomeProps) {
               artist={music?.artist}
               albumImage={music?.albumImage}
               getMusic={getMusic}
+              showModal={showModal}
             />
             <CommandsContainer />
+            <QueueContainer show={show} hideModal={hideModal} />
           </HomeContent>
         </>
       )}
     </>
   );
-}
+};
 
 export default Home;

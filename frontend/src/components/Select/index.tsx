@@ -16,9 +16,7 @@ const Select: React.FC<SelectProps> = ({
   data,
   value,
 }) => {
-  const isSelected = (row: string): boolean => {
-    return value === row;
-  };
+  const isSelected = (row: string): boolean => value === row;
   return (
     <SelectContainer onChange={handleSelectChange}>
       <option value={value}>{placeholder}</option>

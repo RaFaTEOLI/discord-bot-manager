@@ -45,7 +45,7 @@ class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
       );
     }
 
-    return <>{children}</>;
+    return children;
   }
 }
 

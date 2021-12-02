@@ -11,12 +11,10 @@ const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   ...otherProps
-}) => {
-  return (
-    <ButtonContainer onClick={onClick} {...otherProps}>
-      {children}
-    </ButtonContainer>
-  );
-};
+}) => (
+  <ButtonContainer onClick={onClick} {...otherProps}>
+    {children}
+  </ButtonContainer>
+);
 
 export default Button;

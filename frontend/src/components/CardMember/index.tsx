@@ -16,23 +16,21 @@ const MemberCard: React.FC<MemberCardProps> = ({
   avatar,
   status,
   game,
-}) => {
-  return (
-    <CardContainer>
-      <CardContent status={status}>
-        <img src={avatar} alt={`${member} Avatar`} />
-        <div>
-          <h4>{member}</h4>
-          <InfoContainer status={status}>
-            <span>
-              {status === 'dnd' ? 'Busy' : 'Online'}
-              {game?.name && ` - ${game.name}`}
-            </span>
-          </InfoContainer>
-        </div>
-      </CardContent>
-    </CardContainer>
-  );
-};
+}) => (
+  <CardContainer>
+    <CardContent status={status}>
+      <img src={avatar} alt={`${member} Avatar`} />
+      <div>
+        <h4>{member}</h4>
+        <InfoContainer status={status}>
+          <span>
+            {status === 'dnd' ? 'Busy' : 'Online'}
+            {game?.name && ` - ${game.name}`}
+          </span>
+        </InfoContainer>
+      </div>
+    </CardContent>
+  </CardContainer>
+);
 
 export default MemberCard;

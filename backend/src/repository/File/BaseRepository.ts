@@ -2,11 +2,13 @@ import path from 'path';
 import fs from 'fs/promises';
 
 class BaseRepository {
+  protected name: string;
   protected db: Array<any>;
   protected path: string;
   protected type: any;
 
-  public constructor(json: Array<any>, type: any = null) {
+  public constructor(name: string, json: Array<any>, type: any = null) {
+    this.name = name;
     this.db = json;
     this.path = path.join(__dirname, '../db/');
     this.type = type;

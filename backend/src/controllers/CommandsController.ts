@@ -2,8 +2,7 @@ import { Request, Response } from 'express';
 import { Message } from 'discord.js';
 import MusicController from './MusicController';
 import MessageController from './MessageController';
-import CommandsRepository from '../repository/CommandsRepository';
-import commands from '../db/commands.json';
+import CommandsRepository from '../repository/Firebase/CommandsRepository';
 import bot from '../db/bot.json';
 import { Player } from 'discord-music-player';
 
@@ -21,12 +20,14 @@ export interface ICommand {
   message: Message;
   player: Player;
   command: string;
+  type?: string;
+  response?: string;
 }
 
 class CommandsController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { command } = request.query;
+    const commandsRepository = new CommandsRepository();
     if (command) {
       return response.json(await commandsRepository.findByCommand(command));
     } else {
@@ -36,50 +37,51 @@ class CommandsController {
 
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsRepository = new CommandsRepository();
     const data = await commandsRepository.findById(id);
     return response.json(data);
   }
 
   public async store(request: Request, _response: Response): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { command, description, dispatcher, type, response } = request.body;
-    const data = await commandsRepository.store({
-      command: `!${command}`,
-      description,
-      dispatcher,
-      type,
-      response,
-    });
-    return _response.json(data);
+    const commandsRepository = new CommandsRepository();
+    return _response.status(204).json(
+      await commandsRepository.store({
+        command: `!${command}`,
+        description,
+        dispatcher,
+        type,
+        response,
+      }),
+    );
   }
 
   public async update(
     request: Request,
-    _response: Response
+    _response: Response,
   ): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { id } = request.params;
     const { command, description, dispatcher, type, response } = request.body;
-    const data = await commandsRepository.update({
-      id,
-      command: `!${command}`,
-      description,
-      dispatcher,
-      type,
-      response,
-    });
-    return _response.json(data);
+    const commandsRepository = new CommandsRepository();
+    return _response.status(204).json(
+      await commandsRepository.update(id, {
+        command: `!${command}`,
+        description,
+        dispatcher,
+        type,
+        response,
+      }),
+    );
   }
 
   public async destroy(
     request: Request,
-    _response: Response
+    _response: Response,
   ): Promise<Response> {
-    const commandsRepository = new CommandsRepository(commands, 'commands');
     const { id } = request.params;
+    const commandsRepository = new CommandsRepository();
     const data = await commandsRepository.destroy(id);
-    return _response.json(data);
+    return _response.status(204).json(data);
   }
 
   public async getArgs(command: string) {
@@ -100,9 +102,11 @@ class CommandsController {
   public async executeCommand({ message, player, command }: ICommand) {
     const musicController = new MusicController();
     const messageController = new MessageController();
-    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsRepository = new CommandsRepository();
 
-    const cmdObj = await commandsRepository.findByCommand(command);
+    const cmdObj = (await commandsRepository.findByCommand(
+      command,
+    )) as ICommand;
 
     if (!cmdObj) {
       message.reply(`Comando não encontrado, tente !${bot[0].name}.`);
@@ -130,7 +134,7 @@ class CommandsController {
     message,
   }: ICommands) {
     try {
-      const commandsRepository = new CommandsRepository(commands, 'commands');
+      const commandsRepository = new CommandsRepository();
       await commandsRepository.store({
         command: `!${command}`,
         description,

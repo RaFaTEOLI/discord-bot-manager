@@ -1,7 +1,7 @@
-import BaseRepository from './BaseRepository';
 import fs from 'fs/promises';
 
-import { ICommands } from '../controllers/CommandsController';
+import { ICommands } from '../../controllers/CommandsController';
+import BaseRepository from './BaseRepository';
 
 class CommandsRepository extends BaseRepository {
   public async store({
@@ -18,7 +18,6 @@ class CommandsRepository extends BaseRepository {
     });
     return { id, command, dispatcher, type, description, response };
   }
-
   public async update({
     id,
     command,
@@ -41,7 +40,6 @@ class CommandsRepository extends BaseRepository {
     });
     return { id, command, dispatcher, type, description, response };
   }
-
   public async findByCommand(command: any) {
     const result = this.db.filter(obj => obj.command == `!${command}`);
     if (result.length) {
@@ -50,7 +48,6 @@ class CommandsRepository extends BaseRepository {
       return {};
     }
   }
-
   public async destroy(id: string) {
     const result = this.db.filter(obj => {
       return obj.id != id;
@@ -61,26 +58,22 @@ class CommandsRepository extends BaseRepository {
     });
     return;
   }
-
   public async findByType(type: string) {
     if (this.type) {
       const buffer = await fs.readFile(this.path + '/commands.json');
       return JSON.parse(buffer.toString()).filter(
-        (obj: ICommands) => obj.type == type
+        (obj: ICommands) => obj.type == type,
       );
     }
-
     return this.db.filter((obj: ICommands) => obj.type == type);
   }
-
   public async findNotInType(type: string) {
     if (this.type) {
       const buffer = await fs.readFile(this.path + '/commands.json');
       return JSON.parse(buffer.toString()).filter(
-        (obj: ICommands) => obj.type != type
+        (obj: ICommands) => obj.type != type,
       );
     }
-
     return this.db.filter((obj: ICommands) => obj.type != type);
   }
 }

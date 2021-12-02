@@ -12,14 +12,14 @@ class ServerController {
     Embed.addField(
       'Online Members',
       message.guild.members.cache.filter(
-        member => member.presence.guild.available
-      ).size
+        member => member.presence.guild.available,
+      ).size,
     );
     Embed.addField(
       'Offline Members',
       message.guild.members.cache.filter(
-        member => !member.presence.guild.available
-      ).size
+        member => !member.presence.guild.available,
+      ).size,
     );
     message.channel.send(Embed);
   }
@@ -29,7 +29,7 @@ class ServerController {
     Embed.setTitle(`Server Users`);
 
     message.guild.members.cache.map(member =>
-      Embed.addField('-', member.presence.user.username)
+      Embed.addField('-', member.presence.user.username),
     );
 
     message.channel.send(Embed);

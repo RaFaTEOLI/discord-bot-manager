@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import { useCallback, useState } from 'react';
 import {
   PlayerContainer,
   Playing,
@@ -9,26 +11,32 @@ import {
 import musicImg from '../../assets/music.svg';
 import skipImg from '../../assets/skip.svg';
 import pauseImg from '../../assets/pause.svg';
+import queueImg from '../../assets/queue.svg';
 // import goBackImg from '../../assets/goback.svg';
 import emptyAlbumImg from '../../assets/emptyAlbum.png';
 import api from '../../services/api';
-import { toast } from 'react-toastify';
-import { useCallback, useState } from 'react';
+
 interface PlayerProps {
   name?: string;
   artist?: string;
   albumImage?: string;
   getMusic: () => void;
+  showModal: () => void;
 }
 
-function Player({ name, artist, albumImage, getMusic }: PlayerProps) {
+const Player = ({
+  name,
+  artist,
+  albumImage,
+  getMusic,
+  showModal,
+}: PlayerProps) => {
   const [paused, setPaused] = useState<boolean>(false);
 
-  const wait = (timeout: number) => {
-    return new Promise(resolve => {
+  const wait = (timeout: number) =>
+    new Promise(resolve => {
       setTimeout(resolve, timeout);
     });
-  };
 
   const runCommand = useCallback(
     (command: string) => {
@@ -49,42 +57,58 @@ function Player({ name, artist, albumImage, getMusic }: PlayerProps) {
         api
           .post(webHook, requestBody)
           .then(() => {
-            toast.success('Command ran!');
+            toast.success('✅ Command ran!');
             if (command === '!skip') {
               wait(8000).then(() => getMusic());
             }
           })
           .catch(() => {
-            toast.error('Error running command!');
+            toast.error('❌ Error running command!');
           });
       }
     },
-    [setPaused, getMusic]
+    [setPaused, getMusic],
   );
 
   return (
     <PlayerContainer>
       <Playing>
-        <img src={musicImg} alt='Music' />
+        <img src={musicImg} alt="Music" />
         <p>{paused ? 'Paused' : 'Now Playing...'}</p>
       </Playing>
       <Controls>
         {/* <img src={goBackImg} alt='Go Back' /> */}
-
+        <img
+          height={48}
+          width={48}
+          src={queueImg}
+          onClick={showModal}
+          alt="Queue"
+        />
         {paused ? (
           <img
+            height={48}
+            width={48}
             src={pauseImg}
             onClick={() => runCommand('!resume')}
-            alt='Play'
+            alt="Play"
           />
         ) : (
           <img
+            height={48}
+            width={48}
             src={pauseImg}
             onClick={() => runCommand('!pause')}
-            alt='Pause'
+            alt="Pause"
           />
         )}
-        <img src={skipImg} onClick={() => runCommand('!skip')} alt='Skip' />
+        <img
+          height={48}
+          width={48}
+          src={skipImg}
+          onClick={() => runCommand('!skip')}
+          alt="Skip"
+        />
       </Controls>
       <Music>
         <MusicTitle>
@@ -93,14 +117,14 @@ function Player({ name, artist, albumImage, getMusic }: PlayerProps) {
           <p>{artist}</p>
         </MusicTitle>
         <img
-          src={albumImage ? albumImage : emptyAlbumImg}
-          height='60'
-          width='60'
-          alt='Album'
+          src={albumImage || emptyAlbumImg}
+          height="60"
+          width="60"
+          alt="Album"
         />
       </Music>
     </PlayerContainer>
   );
-}
+};
 
 export default Player;

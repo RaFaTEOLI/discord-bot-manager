@@ -4,7 +4,7 @@
     "command": "!rubeo",
     "dispatcher": "message",
     "type": "action",
-    "description": "Descrição do Bot",
+    "description": "Bot description",
     "response": null
   },
   {
@@ -12,7 +12,7 @@
     "command": "!play <link>",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para tocar música",
+    "description": "Command to play music",
     "response": null
   },
   {
@@ -20,7 +20,7 @@
     "command": "!pause",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para pausar a música",
+    "description": "Command to pause the music",
     "response": null
   },
   {
@@ -28,7 +28,7 @@
     "command": "!resume",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para continuar a música",
+    "description": "Command to resume music",
     "response": null
   },
   {
@@ -36,7 +36,7 @@
     "command": "!shuffle",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para colocar em ordem aleatória",
+    "description": "Command to shuffle the queue",
     "response": null
   },
   {
@@ -44,7 +44,7 @@
     "command": "!playing",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para ver qual música está tocando",
+    "description": "Command to see what's playing",
     "response": null
   },
   {
@@ -52,7 +52,7 @@
     "command": "!addplaylist",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para ver adicionar uma playlist na fila",
+    "description": "Command to add a playlist to the queue",
     "response": null
   },
   {
@@ -60,7 +60,7 @@
     "command": "!queue",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para ver a fila de reprodução",
+    "description": "Command to see the queue",
     "response": null
   },
   {
@@ -68,7 +68,7 @@
     "command": "!skip",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para ver a pular a música",
+    "description": "Command to skip the music",
     "response": null
   },
   {
@@ -76,217 +76,217 @@
     "command": "!stop",
     "dispatcher": "message",
     "type": "action",
-    "description": "Comando para ver a parar a música",
+    "description": "Command to stop the music and clear the queue",
     "response": null
   },
   {
     "id": 11,
-    "command": "!addwin",
+    "command": "!playlists",
     "dispatcher": "message",
     "type": "action",
-    "description": "Adiciona vitórias"
+    "description": "Command to show available playlists",
+    "response": null
   },
   {
     "id": 12,
-    "command": "!resetwins",
+    "command": "!addwin",
     "dispatcher": "message",
     "type": "action",
-    "description": "Limpa vitórias"
+    "description": "Command to add wins"
   },
   {
     "id": 13,
-    "command": "!wins",
+    "command": "!resetwins",
     "dispatcher": "message",
     "type": "action",
-    "description": "Mostra quantidade de vitórias"
+    "description": "Command to reset wins"
   },
   {
     "id": 14,
-    "command": "!startwarzone",
-    "dispatcher": "client",
-    "type": "music",
-    "description": "Toca música inicial para o warzone",
-    "response": "https://open.spotify.com/track/6siDDghVE7fxel5o7fE4OF?si=b3d61e7f8f784988"
+    "command": "!wins",
+    "dispatcher": "message",
+    "type": "action",
+    "description": "Command to show the amount of wins"
   },
   {
     "id": 15,
-    "command": "!gulagwin",
-    "dispatcher": "client",
-    "type": "music",
-    "description": "Toca música de vitória do gulag",
-    "response": "https://open.spotify.com/track/24Yi9hE78yPEbZ4kxyoXAI?si=2301e5891ba34556"
-  },
-  {
-    "id": 16,
     "command": "!lofi",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Lofi",
+    "description": "Command to play Lofi playlist",
     "response": "https://open.spotify.com/playlist/3LFIBdP7eZXJKqf3guepZ1?si=d8f32f817fbd4b71"
   },
   {
-    "id": 17,
+    "id": 16,
     "command": "!carmusic",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Car Music",
+    "description": "Command to play Car Music playlist",
     "response": "https://open.spotify.com/playlist/5Y9eVQ3u5rBAfL61OmsvDZ?si=11e22479ddcf40ca"
   },
   {
-    "id": 18,
+    "id": 17,
     "command": "!lit",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist LIT",
+    "description": "Command to play LIT playlist",
     "response": "https://open.spotify.com/playlist/7y47hwPaVMG3527fzdqeEz?si=199e272df1af4d7e"
   },
   {
-    "id": 19,
+    "id": 18,
     "command": "!nostalgy",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Old But Old",
+    "description": "Command to play Old But Old playlist",
     "response": "https://open.spotify.com/playlist/0aIH01fiJYjb23FCGuleNf?si=bdb26051d4ec47eb"
   },
   {
-    "id": 20,
+    "id": 19,
     "command": "!deephouse",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Deep House Hits",
+    "description": "Command to play Deep House Hits playlist",
     "response": "https://open.spotify.com/playlist/2t5U3e6mHq4T2fKXknS4dd?si=2949ab1e236344b5"
   },
   {
-    "id": 21,
+    "id": 20,
     "command": "!chillout",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Chillout",
+    "description": "Command to play Chillout playlist",
     "response": "https://open.spotify.com/playlist/3r40MPFi8fCAHPrxrb9f3I?si=05Tl5vbIRZqIwrDKIv1zsg"
   },
   {
-    "id": 22,
+    "id": 21,
     "command": "!nightdrive",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Night Drive",
+    "description": "Command to play Night Drive playlist",
     "response": "https://open.spotify.com/playlist/18GJyqIBkRWeR1Z57sXQDq?si=tWwlOMrDRxeU-96WHIkLmA"
   },
   {
-    "id": 23,
+    "id": 22,
     "command": "!nightdrive2",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Night Drive",
+    "description": "Command to play Night Drive playlist",
     "response": "https://open.spotify.com/playlist/55kXFRgaWu8Vu0ko7CfbXB?si=cf467669338d48ff"
   },
   {
-    "id": 24,
+    "id": 23,
     "command": "!deepstrangefruits",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist Deep Strange Fruits",
+    "description": "Command to play Deep Strange Fruits playlist",
     "response": "https://open.spotify.com/playlist/6xGLprv9fmlMgeAMpW0x51?si=3kBlZr9NR0muCzttljjP7A"
   },
   {
-    "id": 25,
+    "id": 24,
     "command": "!rocketleague",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca playlist RocketLeague",
+    "description": "Command to play RocketLeague playlist",
     "response": "https://open.spotify.com/playlist/5A7t00DC3dP7htDmFsjF2I?si=28eb317fac49422d"
   },
   {
-    "id": 26,
+    "id": 25,
     "command": "!game",
     "dispatcher": "message",
     "type": "action",
-    "description": "Mostra o jogo que está sendo jogado no momento"
+    "description": "Command to show the current game"
   },
   {
-    "id": 27,
+    "id": 26,
     "command": "!setgame <callofduty>",
     "dispatcher": "message",
     "type": "action",
-    "description": "Adicionar jogo que está sendo jogado no momento"
+    "description": "Command to set the current game"
   },
   {
-    "id": 28,
+    "id": 27,
     "command": "!resetgame",
     "dispatcher": "message",
     "type": "action",
-    "description": "Limpa jogo que está sendo jogado no momento"
+    "description": "Command to reset the current game"
   },
   {
-    "id": 29,
-    "command": "!rafa",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "Pra ele ja deu de Warzone por hoje!"
-  },
-  {
-    "id": 30,
-    "command": "!rick",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "O cara que demora 2 horas pra jantar/almoçar"
-  },
-  {
-    "id": 31,
-    "command": "!thiago",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "Louco pra pegar uma militar"
-  },
-  {
-    "id": 32,
-    "command": "!leo",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "Ta no Bar Mitzvah https://www.youtube.com/watch?v=BkWJik6QjeQ"
-  },
-  {
-    "id": 33,
-    "command": "!gui",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "Já tá bravo Gui?"
-  },
-  {
-    "id": 34,
-    "command": "!gi",
-    "dispatcher": "message",
-    "type": "message",
-    "description": "Descrição do integrante",
-    "response": "Vem pro FIFA vem!"
-  },
-  {
-    "id": 35,
+    "id": 28,
     "command": "!addcommand",
     "dispatcher": "message",
     "type": "action",
-    "description": "Cria novo comando",
+    "description": "Command to create a new command",
     "response": null
   },
   {
-    "id": 36,
+    "id": 29,
     "command": "!helpcommand",
     "dispatcher": "message",
     "type": "action",
-    "description": "Ajuda para criar comando",
+    "description": "Command to help with the creation of a new command",
     "response": null
   },
   {
-    "id": 37,
+    "id": 30,
     "command": "!invisible",
     "dispatcher": "client",
     "type": "music",
-    "description": "Toca musica invisible",
+    "description": "Play the music invisible",
     "response": "https://open.spotify.com/track/2BgagqJWYfrKPhz3f5V0Sw?si=47f07de2ac584184"
+  },
+  {
+    "id": 31,
+    "command": "!pagode",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Play the pagode playlist",
+    "response": "https://open.spotify.com/playlist/3V07mgTLdNgCRrXTEXtLKI?si=dd2c2d6c856b4563"
+  },
+  {
+    "id": 32,
+    "command": "!minecraftserver",
+    "dispatcher": "message",
+    "type": "message",
+    "description": "Command to return minecraft server's ip",
+    "response": "0.0.0.0:25565"
+  },
+  {
+    "id": 33,
+    "command": "!nightdrivemusic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Night Drive Music playlist",
+    "response": "https://open.spotify.com/playlist/2ATLME9rzaswBjYMQC9Xcp?si=1699a41f21594783"
+  },
+  {
+    "id": 34,
+    "command": "!darkeletronic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Dark Eletronic Beats playlist",
+    "response": "https://open.spotify.com/playlist/0bHmCeYImRqGQoGz8clIah?si=d02c5e94a52e442a"
+  },
+  {
+    "id": 35,
+    "command": "!gamingmusic",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play Gaming Music playlist",
+    "response": "https://open.spotify.com/playlist/5AHH67GYsljwoB1q6UGvWg?si=23b2f18597cc4ba2"
+  },
+  {
+    "id": 36,
+    "command": "!edmhits",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play EDM Hits playlist",
+    "response": "https://open.spotify.com/playlist/2NIe54HdwR5msTjrlHG1Lt?si=d75ec27de591441f"
+  },
+  {
+    "id": 37,
+    "command": "!therealedm",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play The Real Edm playlist",
+    "response": "https://open.spotify.com/playlist/2iInn1W8lx8UWmgOaknno4?si=b92d26fb19624dfc"
   }
 ]

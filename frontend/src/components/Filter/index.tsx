@@ -6,16 +6,10 @@ interface FilterProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ handleChange }) => {
-  return (
-    <FilterContainer>
-      <input
-        type='text'
-        onChange={handleChange}
-        placeholder={`${'Search'}...`}
-      />
-    </FilterContainer>
-  );
-};
+const Filter: React.FC<FilterProps> = ({ handleChange }) => (
+  <FilterContainer>
+    <input type="text" onChange={handleChange} placeholder={`${'Search'}...`} />
+  </FilterContainer>
+);
 
 export default Filter;

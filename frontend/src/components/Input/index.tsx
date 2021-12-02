@@ -11,18 +11,16 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   handleChange,
   ...otherProps
-}) => {
-  return (
-    <InputContainer>
-      <input
-        name={name}
-        type='text'
-        onChange={handleChange}
-        placeholder={placeholder}
-        {...otherProps}
-      />
-    </InputContainer>
-  );
-};
+}) => (
+  <InputContainer>
+    <input
+      name={name}
+      type="text"
+      onChange={handleChange}
+      placeholder={placeholder}
+      {...otherProps}
+    />
+  </InputContainer>
+);
 
 export default Input;

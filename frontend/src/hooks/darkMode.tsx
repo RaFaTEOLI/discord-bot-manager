@@ -9,12 +9,14 @@ export const useDarkMode = (): [string, () => void] => {
   };
 
   const themeToggler = (): void => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     theme === 'dark' ? setMode('light') : setMode('dark');
     window.location.reload();
   };
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     localTheme && setTheme(localTheme);
   }, []);
 

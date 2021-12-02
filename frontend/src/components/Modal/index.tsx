@@ -14,22 +14,21 @@ const Modal: React.FC<ModalProps> = ({
   show,
   title,
   children,
-}) => {
-  return (
-    <>
-      {show && (
-        <ModalContainer>
-          <ModalMain>
-            <ModalTitle>
-              <h1>{title}</h1>
-              <CloseButton onClick={handleClose}>×</CloseButton>
-            </ModalTitle>
-            {children}
-          </ModalMain>
-        </ModalContainer>
-      )}
-    </>
-  );
-};
+}) => (
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  <>
+    {show && (
+      <ModalContainer>
+        <ModalMain>
+          <ModalTitle>
+            <h1>{title}</h1>
+            <CloseButton onClick={handleClose}>×</CloseButton>
+          </ModalTitle>
+          {children}
+        </ModalMain>
+      </ModalContainer>
+    )}
+  </>
+);
 
 export default Modal;

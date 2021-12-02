@@ -1,7 +1,6 @@
 import BaseRepository from './BaseRepository';
 
 import fs from 'fs/promises';
-import SpotifyController from '../controllers/SpotifyController';
 
 interface Item {
   id: string;
@@ -11,7 +10,7 @@ interface Item {
 }
 
 class MusicRepository extends BaseRepository {
-  public async store(song: String | null) {
+  public async store(song: String | null): Promise<void> {
     if (song) {
       const songName = song
         .split('-')[0]
@@ -19,14 +18,6 @@ class MusicRepository extends BaseRepository {
         .trimEnd();
       const bandName = song.split('-')[1]?.trimStart().trimEnd();
 
-      // const spotifyController = new SpotifyController();
-      // const spotifyItem = await spotifyController.getItem(songName, bandName);
-      // const albumImage = await spotifyController.getTrack(spotifyItem.id);
-
-      // this.db[0] = {
-      //   ...spotifyItem,
-      //   albumImage,
-      // };
       this.db[0].name = songName;
       this.db[0].artist = bandName;
       this.db[0].albumImage = null;

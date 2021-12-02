@@ -6,14 +6,12 @@ type ChannelCardProps = {
   name: string;
 };
 
-const ChannelCard: React.FC<ChannelCardProps> = ({ name }) => {
-  return (
-    <CardContainer>
-      <CardContent>
-        <h4>{name}</h4>
-      </CardContent>
-    </CardContainer>
-  );
-};
+const ChannelCard: React.FC<ChannelCardProps> = ({ name }) => (
+  <CardContainer>
+    <CardContent>
+      <h4>{name}</h4>
+    </CardContent>
+  </CardContainer>
+);
 
 export default ChannelCard;

@@ -12,17 +12,15 @@ const CommandCard: React.FC<CommandCardProps> = ({
   command,
   description,
   handleClick,
-}) => {
-  return (
-    <CardContainer onClick={handleClick}>
-      <CardContent>
-        <h4>{command}</h4>
-        <InfoContainer>
-          <span>{description}</span>
-        </InfoContainer>
-      </CardContent>
-    </CardContainer>
-  );
-};
+}) => (
+  <CardContainer onClick={handleClick}>
+    <CardContent>
+      <h4>{command}</h4>
+      <InfoContainer>
+        <span>{description}</span>
+      </InfoContainer>
+    </CardContent>
+  </CardContainer>
+);
 
 export default CommandCard;

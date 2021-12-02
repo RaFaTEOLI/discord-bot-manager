@@ -10,18 +10,14 @@ interface HeaderProps {
 const botName = process.env.REACT_APP_BOT_NAME;
 const imgUrl = `https://robohash.org/${botName}?gravatar=hashed`;
 
-function Header({ title, handleToggle, theme }: HeaderProps) {
-  return (
-    <HeaderContainer>
-      <LeftContainer>
-        <img src={imgUrl} alt='logo' />
-        <h1>{title}</h1>
-      </LeftContainer>
-      <>
-        <Switch theme={theme} handleToggle={handleToggle} />
-      </>
-    </HeaderContainer>
-  );
-}
+const Header = ({ title, handleToggle, theme }: HeaderProps) => (
+  <HeaderContainer>
+    <LeftContainer>
+      <img src={imgUrl} alt="logo" />
+      <h1>{title}</h1>
+    </LeftContainer>
+    <Switch theme={theme} handleToggle={handleToggle} />
+  </HeaderContainer>
+);
 
 export default Header;

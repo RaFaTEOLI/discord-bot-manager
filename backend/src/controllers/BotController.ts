@@ -1,16 +1,11 @@
 import { Request, Response } from 'express';
 const Discord = require('discord.js');
 import { Message } from 'discord.js';
-import BotRepository from '../repository/BotRepository';
-import CommandsRepository from '../repository/CommandsRepository';
+import BotRepository from '../repository/Firebase/BotRepository';
+import CommandsRepository from '../repository/Firebase/CommandsRepository';
 import bot from '../db/bot.json';
-import commands from '../db/commands.json';
 import types from '../db/types.json';
 import { ICommands } from './CommandsController';
-
-interface ITypes {
-  name: string;
-}
 
 export interface IBot {
   name: string;
@@ -25,13 +20,14 @@ class BotController {
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
-    const botRepository = new BotRepository(bot);
-    return response.json(await botRepository.all());
+    const botRepository = new BotRepository();
+    const bot = (await botRepository.all()) as IBot[];
+    return response.json([bot]);
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const botRepository = new BotRepository(bot);
+    const botRepository = new BotRepository();
     const data = await botRepository.findById(id);
     return response.json(data);
   }
@@ -40,10 +36,9 @@ class BotController {
     const Embed = new Discord.MessageEmbed();
     Embed.setTitle(this.bot[0].description);
 
-    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsRepository = new CommandsRepository();
     const commandsResults = await commandsRepository.findNotInType('music');
 
-    console.log(commandsResults);
     commandsResults.forEach((command: ICommands) => {
       Embed.addField(command.command, command.description);
     });
@@ -53,9 +48,13 @@ class BotController {
 
   public async playlists(message: Message) {
     const Embed = new Discord.MessageEmbed();
-    Embed.setTitle('My Playlists');
+    Embed.setTitle('📀  Playlists').setAuthor(
+      process.env.BOT_NAME,
+      `https://robohash.org/${process.env.BOT_NAME}?gravatar=hashed`,
+      'https://discord-manager-bot-frontend.herokuapp.com/',
+    );
 
-    const commandsRepository = new CommandsRepository(commands, 'commands');
+    const commandsRepository = new CommandsRepository();
     const commandsResults = await commandsRepository.findByType('music');
 
     commandsResults.forEach((command: ICommands) => {
@@ -71,7 +70,7 @@ class BotController {
       `Para criar um comando você precisa seguir esse exemplo:
         
 !addcommand <[client|message]> <[${types}]> <"command"> <"descrição"> <retorno>
-        `
+        `,
     );
   }
 

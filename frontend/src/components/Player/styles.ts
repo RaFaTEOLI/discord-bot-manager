@@ -19,7 +19,6 @@ export const PlayerContainer = styled.div`
 export const Playing = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   width: 40vh;
   img {
     height: 58px;

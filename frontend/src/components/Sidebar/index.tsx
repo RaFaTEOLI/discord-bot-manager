@@ -22,13 +22,15 @@ interface IChannel {
 const serverId = process.env.REACT_APP_DISCORD_SERVER_ID;
 const apiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
 
-function Sidebar() {
+const Sidebar = () => {
   const [members, setMembers] = useState<Array<IMember>>();
   const [channels, setChannels] = useState<Array<IChannel>>();
 
   const loadServer = () => {
+    // eslint-disable-next-line no-console
     console.log('Loading Server...');
     axios.get(apiUrl).then(response => {
+      // eslint-disable-next-line no-console
       console.log(response.data);
       setMembers(response.data.members);
       setChannels(response.data.channels);
@@ -71,6 +73,6 @@ function Sidebar() {
       )}
     </SidebarContainer>
   ) : null;
-}
+};
 
 export default Sidebar;

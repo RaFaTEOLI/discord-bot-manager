@@ -10,15 +10,13 @@ interface SwitchProps {
   theme: string;
 }
 
-const Switch = ({ theme, handleToggle, ...otherProps }: SwitchProps) => {
-  return (
-    <SwitchContainer>
-      {' '}
-      <a href='#theme' onClick={handleToggle} {...otherProps}>
-        <Icon icon={theme === 'dark' ? faMoon : faSun} />
-      </a>
-    </SwitchContainer>
-  );
-};
+const Switch = ({ theme, handleToggle, ...otherProps }: SwitchProps) => (
+  <SwitchContainer>
+    {' '}
+    <a href="#theme" onClick={handleToggle} {...otherProps}>
+      <Icon icon={theme === 'dark' ? faMoon : faSun} />
+    </a>
+  </SwitchContainer>
+);
 
 export default Switch;

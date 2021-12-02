@@ -1,2 +1,4 @@
-const Listener = require('./Listener');
-const Server = require('./Server');
+import './services/firebase';
+
+require('./Listener');
+require('./Server');

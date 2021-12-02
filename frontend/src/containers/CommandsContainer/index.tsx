@@ -1,9 +1,9 @@
 import { useCallback, useState, useEffect, useMemo } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
 import Button from '../../components/Button';
 import Filter from '../../components/Filter';
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
@@ -35,7 +35,7 @@ export interface ICommand {
 interface IType {
   name: string;
 }
-function CommandsContainer() {
+const CommandsContainer = () => {
   const [searchInput, setSearchInput] = useState('');
   const [commandId, setCommandId] = useState(0);
   const [dispatcher, setDispatcher] = useState('');
@@ -59,28 +59,28 @@ function CommandsContainer() {
     setShow(false);
   };
 
+  const fetchCommands = () => {
+    api.get('/commands').then(res => {
+      setCommands(res.data);
+      setLoading(false);
+    });
+  };
+
   useEffect(() => {
     fetchCommands();
   }, []);
 
   useEffect(() => {
-    api.get(`/types`).then(response => {
-      setTypes(response.data);
+    api.get('/types').then(res => {
+      setTypes(res.data);
     });
   }, []);
-
-  const fetchCommands = () => {
-    api.get(`/commands`).then(response => {
-      setCommands(response.data);
-      setLoading(false);
-    });
-  };
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
       setSearchInput(e.target.value);
     },
-    []
+    [],
   );
 
   const handleDispatcherChange = useCallback(e => {
@@ -93,14 +93,14 @@ function CommandsContainer() {
 
   const editCommand = (id: number) => {
     setCommandId(id);
-    api.get(`/commands/${id}`).then(response => {
-      setCommand(response.data.command);
-      setDescription(response.data.description);
-      setDispatcher(response.data.dispatcher);
-      setType(response.data.type);
-      setResponse(response.data.response);
+    api.get(`/commands/${id}`).then(res => {
+      setCommand(res.data.command);
+      setDescription(res.data.description);
+      setDispatcher(res.data.dispatcher);
+      setType(res.data.type);
+      setResponse(res.data.response);
 
-      if (response.data.type === 'message' || response.data.type === 'music') {
+      if (res.data.type === 'message' || res.data.type === 'music') {
         showModal();
       } else {
         toast.error("You can't edit this command");
@@ -130,42 +130,42 @@ function CommandsContainer() {
               dispatcher,
               response,
             })
-            .then(response => {
-              if (response.data.id) {
+            .then(res => {
+              if (res.status === 204) {
                 fetchCommands();
-                toast.success('Command updated!');
+                toast.success('✅ Command updated!');
                 hideModal();
               } else {
-                toast.error('Error updating command!');
+                toast.error('❌ Error updating command!');
               }
             })
-            .catch(err => {
-              toast.error('Error creating command!');
+            .catch(() => {
+              toast.error('❌ Error creating command!');
             });
         } else {
           api
-            .post(`/commands`, {
+            .post('/commands', {
               command: command.replaceAll('!', ''),
               type,
               description,
               dispatcher,
               response,
             })
-            .then(response => {
-              if (response.data.id) {
+            .then(res => {
+              if (res.status === 204) {
                 fetchCommands();
-                toast.success('Command created!');
+                toast.success('✅ Command created!');
                 hideModal();
               } else {
-                toast.error('Error creating command!');
+                toast.error('❌ Error creating command!');
               }
             })
-            .catch(err => {
-              toast.error('Error creating command!');
+            .catch(() => {
+              toast.error('❌ Error creating command!');
             });
         }
       } else {
-        toast.error('All fields are required!');
+        toast.error('❌ All fields are required!');
       }
     } else {
       toast.error("You can't edit this command");
@@ -176,18 +176,18 @@ function CommandsContainer() {
     if (type === 'message' || type === 'music') {
       api
         .delete(`/commands/${commandId}`)
-        .then(response => {
+        .then(() => {
           fetchCommands();
-          toast.success('Command deleted!');
+          toast.success('✅ Command deleted!');
           const newCommands = commands.filter(
             // eslint-disable-next-line
-            command => command.id != commandId
+            command => command.id != commandId,
           );
           setCommands(newCommands);
           hideModal();
         })
-        .catch(err => {
-          toast.error('Error deleting command!');
+        .catch(() => {
+          toast.error('❌ Error deleting command!');
         });
     } else {
       toast.error("You can't remove this command");
@@ -206,30 +206,33 @@ function CommandsContainer() {
       };
       api
         .post(webHook, requestBody)
-        .then(response => {
-          toast.success('Command ran!');
+        .then(() => {
+          toast.success('✅ Command ran!');
           hideModal();
         })
-        .catch(err => {
-          toast.error('Error running command!');
+        .catch(() => {
+          toast.error('❌ Error running command!');
         });
     }
   };
 
   const formattedTypes = useMemo(() => {
     if (types.length > 0) {
-      return types.map(type => type.name);
+      return types.map(tp => tp.name);
     }
     return [];
   }, [types]);
 
-  const filteredCommands = useMemo(() => {
-    return commands.filter((command: ICommand) => {
-      return command.command.toLowerCase().includes(searchInput.toLowerCase());
-    });
-  }, [commands, searchInput]);
+  const filteredCommands = useMemo(
+    () =>
+      commands.filter((cmd: ICommand) =>
+        cmd.command.toLowerCase().includes(searchInput.toLowerCase()),
+      ),
+    [commands, searchInput],
+  );
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {loading ? (
         <Loading />
@@ -245,65 +248,73 @@ function CommandsContainer() {
           </Container>
           <ContentContainer>
             <ListCommandsContainer>
-              {filteredCommands.map(command => (
+              {filteredCommands.map(cmd => (
                 <CommandCard
-                  key={command.id}
-                  command={command.command}
-                  description={command.description}
-                  handleClick={() => editCommand(command.id)}
+                  key={cmd.id}
+                  command={cmd.command}
+                  description={cmd.description}
+                  handleClick={() => editCommand(cmd.id)}
                 />
               ))}
             </ListCommandsContainer>
             <Sidebar />
           </ContentContainer>
-          <Modal show={show} title='Command' handleClose={hideModal}>
-            <>
-              <FormContainer>
-                <Input
-                  name='command'
-                  value={command}
-                  onChange={event => setCommand(event.target.value)}
-                  placeholder='Command'
-                />
-                <Input
-                  name='description'
-                  value={description}
-                  onChange={event => setDescription(event.target.value)}
-                  placeholder='Description'
-                />
-                <Select
-                  data={['client', 'message']}
-                  value={dispatcher}
-                  placeholder='Dispatcher'
-                  handleSelectChange={handleDispatcherChange}
-                />
-                <Select
-                  data={formattedTypes}
-                  placeholder='Type'
-                  value={type}
-                  handleSelectChange={handleTypeChange}
-                />
-                <Input
-                  name='response'
-                  onChange={event => setResponse(event.target.value)}
-                  value={response}
-                  placeholder='Response'
-                />
-                <Button onClick={submitForm}>Save</Button>
-                {commandId > 0 && <Button onClick={runCommand}>Run</Button>}
-                {commandId > 0 && (type === 'message' || type === 'music') && (
-                  <Button type='danger' onClick={removeCommand}>
-                    Remove
-                  </Button>
-                )}
-              </FormContainer>
-            </>
+          <Modal show={show} title="Command" handleClose={hideModal}>
+            <FormContainer>
+              <Input
+                name="command"
+                value={command}
+                onChange={event => setCommand(event.target.value)}
+                placeholder="Command"
+              />
+              <Input
+                name="description"
+                value={description}
+                onChange={event => setDescription(event.target.value)}
+                placeholder="Description"
+              />
+              <Select
+                data={['client', 'message']}
+                value={dispatcher}
+                placeholder="Dispatcher"
+                handleSelectChange={handleDispatcherChange}
+              />
+              <Select
+                data={formattedTypes}
+                placeholder="Type"
+                value={type}
+                handleSelectChange={handleTypeChange}
+              />
+              <Input
+                name="response"
+                onChange={event => setResponse(event.target.value)}
+                value={response}
+                placeholder="Response"
+              />
+              <Button onClick={submitForm}>Save</Button>
+              {commandId && <Button onClick={runCommand}>Run</Button>}
+              {commandId && (type === 'message' || type === 'music') && (
+                <Button type="danger" onClick={removeCommand}>
+                  Remove
+                </Button>
+              )}
+            </FormContainer>
           </Modal>
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+          />
         </>
       )}
     </>
   );
-}
+};
 
 export default CommandsContainer;

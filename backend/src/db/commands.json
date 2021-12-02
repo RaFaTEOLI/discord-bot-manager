@@ -279,6 +279,14 @@
     "dispatcher": "client",
     "type": "music",
     "description": "Command to play EDM Hits playlist",
-    "response": "https://open.spotify.com/playlist/2NIe54HdwR5msTjrlHG1Lt?si=190b01081ea34bbc"
+    "response": "https://open.spotify.com/playlist/2NIe54HdwR5msTjrlHG1Lt?si=d75ec27de591441f"
+  },
+  {
+    "id": 37,
+    "command": "!therealedm",
+    "dispatcher": "client",
+    "type": "music",
+    "description": "Command to play The Real Edm playlist",
+    "response": "https://open.spotify.com/playlist/2iInn1W8lx8UWmgOaknno4?si=b92d26fb19624dfc"
   }
 ]
