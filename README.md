@@ -1,3 +1,6 @@
+# New Project: https://github.com/RaFaTEOLI/discord-bot-app
+# This current repo is deprecated, please check https://github.com/RaFaTEOLI/discord-bot-app
+
 # Discord Bot Manager
 
 A bot for discord and a web manager to manage the bot.
